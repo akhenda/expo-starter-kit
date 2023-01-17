@@ -1,6 +1,25 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "eslint-config-heimdall/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "jsx": "react-native",
+    "lib": ["DOM", "ESNext"],
+    "noEmit": true,
+    "target": "ESNext",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@assets/*": ["src/constants/assets/*"],
+      "@colors/*": ["src/theme/colors/*"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/config/constants/*"],
+      "@screens/*": ["src/screens/*"],
+      "@utils/*": ["src/utils/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@theme/*": ["src/theme/*"],
+      "@providers/*": ["src/providers/*"],
+      "@services/*": ["src/services/*"],
+      "@hooks/*": ["src/hooks/*"]
+    }
   }
 }

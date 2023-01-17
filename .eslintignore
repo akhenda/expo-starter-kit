@@ -1,0 +1,14 @@
+/dist
+/node_modules
+.eslintrc.js
+jest.config.js
+coverage
+/coverage
+.expo/*
+.npmrc
+
+# Ignore Native files.
+/android/**/*
+/ios/**/*
+
+tools/generators/templates
