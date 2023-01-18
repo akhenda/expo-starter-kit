@@ -4,6 +4,7 @@
  * @module jestConfig
  * @see https://jestjs.io/docs/configuration
  * @see https://docs.expo.dev/guides/testing-with-jest/
+ * @see https://github.com/vanGalilea/react-native-testing
  */
 
 const { join } = require('node:path');
