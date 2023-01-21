@@ -22,6 +22,7 @@ const getPlugins = () => {
     [
       'i18next-extract',
       {
+        discardOldKeys: true,
         keyAsDefaultValue: ['en'],
         keyAsDefaultValueForDerivedKeys: false,
         keySeparator: null,
