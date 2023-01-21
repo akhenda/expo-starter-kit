@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-starter-kit",
-    "slug": "expo-starter-kit",
+    "name": "expo-starter",
+    "slug": "expo-starter",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
@@ -11,13 +11,15 @@
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#194351"
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/9cee5153-b650-4374-b3ce-a92218e67978"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.akhenda.expostarter"
@@ -25,14 +27,16 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#194351"
       },
       "package": "com.akhenda.expostarter"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
     },
-    "plugins": ["expo-community-flipper"],
+    "plugins": [
+      "expo-community-flipper"
+    ],
     "extra": {
       "eas": {
         "projectId": "9cee5153-b650-4374-b3ce-a92218e67978"

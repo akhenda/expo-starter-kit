@@ -40,5 +40,11 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'react/style-prop-object': [
+      'error',
+      {
+        allow: ['StatusBar'],
+      },
+    ],
   },
 };
