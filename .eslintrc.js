@@ -39,5 +39,6 @@ module.exports = {
     'no-use-before-define': ['off', { functions: false, classes: false }],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

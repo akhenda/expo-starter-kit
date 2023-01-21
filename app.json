@@ -19,7 +19,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.akhenda.expostarter"
     },
     "android": {
       "adaptiveIcon": {

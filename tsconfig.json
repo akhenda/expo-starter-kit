@@ -10,6 +10,7 @@
     "paths": {
       "@src/*": ["src/*"],
       "@assets/*": ["src/constants/assets/*"],
+      "@config/*": ["src/config/*"],
       "@colors/*": ["src/theme/colors/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/config/constants/*"],

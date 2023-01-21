@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx lint-staged && pnpm run i18n:extract-and-sync
+pnpm run lint && pnpm run i18n:check
