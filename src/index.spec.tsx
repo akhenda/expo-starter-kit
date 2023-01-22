@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import Entry from '.';
 
-jest.mock('./hooks/useCachedResources', () => jest.fn().mockResolvedValue(true));
+jest.mock('./hooks/useOnAppStart', () => jest.fn().mockResolvedValue(true));
 
 describe('<Entry />', () => {
   it('has 1 child', () => {

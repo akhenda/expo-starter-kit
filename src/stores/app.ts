@@ -1,7 +1,7 @@
 import { createStore } from '@udecode/zustood';
 import { createJSONStorage } from 'zustand/middleware';
 
-import { zustandMMKVStorage } from './mmkv';
+import { zustandMMKVStorage } from '@src/utils/storage/mmkv';
 
 const APP_STATE_STORAGE_KEY = '@AppState';
 
@@ -11,18 +11,16 @@ const initialAppState = {
   hasOnboarded: false,
 };
 
-export const appStore = createStore('repo')(
-  {
-    ...initialAppState,
-    middlewares: ['persist'],
+export const appStore = createStore('app')(initialAppState, {
+  devtools: {
+    enabled: __DEV__,
   },
-  {
-    persist: {
-      name: APP_STATE_STORAGE_KEY,
-      storage: createJSONStorage(() => zustandMMKVStorage),
-    },
+  persist: {
+    enabled: true,
+    name: APP_STATE_STORAGE_KEY,
+    storage: createJSONStorage(() => zustandMMKVStorage),
   },
-)
+})
   .extendActions((set, get) => ({
     changeTheme: (payload: string) => set.colorScheme(payload),
     onboard: () => set.hasOnboarded(true),
@@ -30,8 +28,10 @@ export const appStore = createStore('repo')(
   }))
   .extendActions((set) => ({
     reset: () => {
-      set.haptics(initialAppState.haptics);
-      set.colorScheme(initialAppState.colorScheme);
-      set.hasOnboarded(initialAppState.hasOnboarded);
+      const { colorScheme, haptics, hasOnboarded } = initialAppState;
+
+      set.haptics(haptics);
+      set.colorScheme(colorScheme);
+      set.hasOnboarded(hasOnboarded);
     },
   }));

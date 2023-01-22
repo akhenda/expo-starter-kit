@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react-native/no-inline-styles */
 /**
  * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
@@ -8,7 +7,7 @@
  *
  */
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
@@ -22,11 +21,22 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import type { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 
-import LinkingConfiguration from './LinkingConfiguration';
+import { linkingConfig } from './config';
+import { navigationRef } from './utils';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+type NavigationContainerProps = Partial<React.ComponentProps<typeof NavigationContainer>>;
+
+export default function Navigation({ initialState, onStateChange }: NavigationContainerProps) {
+  const colorScheme = useColorScheme();
+
   return (
-    <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer
+      linking={linkingConfig}
+      ref={navigationRef}
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      initialState={initialState}
+      onStateChange={onStateChange}
+    >
       <RootNavigator />
     </NavigationContainer>
   );

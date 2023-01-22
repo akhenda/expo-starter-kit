@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    // jest: true,
+    jest: true,
   },
   extends: ['@react-native-community', 'heimdall/native', 'heimdall/tests'],
   overrides: [],
@@ -40,6 +40,7 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/style-prop-object': [
       'error',
       {

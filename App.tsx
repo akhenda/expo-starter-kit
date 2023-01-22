@@ -1,15 +1,12 @@
-// eslint-disable-next-line simple-import-sort/imports
-import '@src/config/i18n';
-
 import { StatusBar } from 'expo-status-bar';
 
-import Entry from './src';
+import App from './src';
 
-export default function App() {
+export default function MainApp() {
   return (
     <>
       <StatusBar style="auto" backgroundColor="transparent" translucent />
-      <Entry />
+      <App />
     </>
   );
 }

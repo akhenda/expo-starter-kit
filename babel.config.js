@@ -1,5 +1,6 @@
 const getPlugins = () => {
   const plugins = [
+    'react-native-reanimated/plugin',
     [
       require.resolve('babel-plugin-module-resolver'),
       {
@@ -28,7 +29,7 @@ const getPlugins = () => {
         keySeparator: null,
         locales: ['en'],
         nsSeparator: null,
-        outputPath: 'src/config/i18n/locales/en.json',
+        outputPath: 'src/config/libs/i18n/locales/en.json',
       },
     ],
   ];
