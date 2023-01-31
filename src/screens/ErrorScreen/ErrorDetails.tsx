@@ -1,6 +1,8 @@
 import React, { ErrorInfo } from 'react';
-import { Pressable, ScrollView, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { Pressable, ScrollView, TextStyle, ViewStyle } from 'react-native';
 
+import { Text, View } from '@components/Themed';
+import { LabyBugIcon } from '@src/components/Icons';
 import { colors, spacing } from '@src/theme';
 
 export interface ErrorDetailsProps {
@@ -55,9 +57,9 @@ export function ErrorDetails({ error, onReset, errorInfo }: ErrorDetailsProps) {
   return (
     <View style={$contentContainer}>
       <View style={$topSection}>
-        {/* <Icon icon="ladybug" size={64} /> */}
-        <Text style={$heading}>Error</Text>
-        <Text>Error</Text>
+        <LabyBugIcon size={64} />
+        <Text style={$heading}>Error Boundary Details</Text>
+        <Text>Error Boundary Details</Text>
       </View>
 
       <ScrollView style={$errorSection} contentContainerStyle={$errorSectionContentContainer}>

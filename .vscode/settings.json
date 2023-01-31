@@ -31,5 +31,6 @@
   // Other rules
   "editor.wordWrap": "on",
   "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "i18n-ally.localesPaths": ["src/config/libs/i18n", "src/config/libs/i18n/locales"]
 }

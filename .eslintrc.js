@@ -47,5 +47,13 @@ module.exports = {
         allow: ['StatusBar'],
       },
     ],
+
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: ['function-declaration', 'arrow-function'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
   },
 };

@@ -20,7 +20,7 @@ const BaseConfig: ConfigBaseProps = {
 
   // This feature is particularly useful in development mode, but
   // can be used in production as well if you prefer.
-  persistNavigation: 'dev',
+  persistNavigation: 'never',
 };
 
 export default BaseConfig;

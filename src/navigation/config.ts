@@ -3,32 +3,44 @@
  * https://reactnavigation.org/docs/deep-linking
  * https://reactnavigation.org/docs/configuring-links
  */
-
 import type { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
 
-import type { RootStackParamList } from '../types';
+import type { RootStackParamList } from './navigators/RootNavigator';
 
-export const linkingConfig: LinkingOptions<RootStackParamList> = {
+const prefixes = [Linking.createURL('/'), 'https://app.example.com'];
+
+export const linkingConfigLoggedIn: LinkingOptions<RootStackParamList> = {
   config: {
     screens: {
-      Modal: 'modal',
-      NotFound: '*',
-      Root: {
+      'App Stack': {
         screens: {
-          TabOne: {
+          'Edit Profile': 'edit-profile',
+          'Home Stack': {
             screens: {
-              TabOneScreen: 'one',
+              About: 'about',
             },
           },
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
+          'You are not Authorized': '403',
         },
       },
+      Modal: 'modal',
     },
   },
-  prefixes: [Linking.createURL('/')],
+  prefixes,
+};
+
+export const linkingConfigLoggedOut: LinkingOptions<RootStackParamList> = {
+  config: {
+    screens: {
+      'App Stack': '*',
+    },
+  },
+  prefixes,
+};
+
+export const useLinkingConfig = () => {
+  const isAuthenticated = true;
+
+  return isAuthenticated ? linkingConfigLoggedIn : linkingConfigLoggedOut;
 };

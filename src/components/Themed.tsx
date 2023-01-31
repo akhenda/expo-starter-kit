@@ -1,5 +1,4 @@
 /* eslint-disable react/require-default-props */
-/* eslint-disable react/jsx-props-no-spreading */
 /**
  * Learn more about Light and Dark modes:
  * https://docs.expo.io/guides/color-schemes/
@@ -17,9 +16,8 @@ export function useThemeColor(
   const theme = useColorScheme();
   const colorFromProps = props[theme];
 
-  if (colorFromProps) {
-    return colorFromProps;
-  }
+  if (colorFromProps) return colorFromProps;
+
   return Colors[theme][colorName];
 }
 

@@ -9,6 +9,5 @@ const styles = StyleSheet.create({
 });
 
 export default function MonoText({ style, ...rest }: TextProps) {
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <Text {...rest} style={[style, styles.text]} />;
 }

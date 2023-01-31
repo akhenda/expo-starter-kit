@@ -56,7 +56,7 @@ export default {
   runtimeVersion: {
     policy: 'sdkVersion',
   },
-  scheme: 'myapp',
+  scheme: 'expo-starter',
   slug: 'expo-starter-kit',
   splash: LIGHT_SPLASH,
   updates: {

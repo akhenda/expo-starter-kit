@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Entry from '.';
+import App from '.';
 
 jest.mock('./hooks/useOnAppStart', () => jest.fn().mockResolvedValue(true));
 
-describe('<Entry />', () => {
+describe('<App />', () => {
   it('has 1 child', () => {
-    const tree = renderer.create(<Entry />).toJSON();
+    const tree = renderer.create(<App />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

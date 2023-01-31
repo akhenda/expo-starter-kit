@@ -11,10 +11,13 @@
  * Note that Fast Refresh doesn't play well with this file, so if you edit this,
  * do a full refresh of your app instead.
  *
+ * @see_also https://github.com/infinitered/reactotron/issues/162
+ *
  * @refresh reset
  */
 import { Platform } from 'react-native';
-import { ArgType } from 'reactotron-core-client';
+import { ArgType } from 'reactotron-core-client'; // eslint-disable-line import/no-extraneous-dependencies
+import { networking } from 'reactotron-react-native'; // eslint-disable-line import/no-extraneous-dependencies
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { goBack, navigate, resetRoot } from '@src/navigation/utils';
@@ -77,6 +80,13 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       name: config.name,
     });
 
+    Reactotron.use(
+      networking({
+        ignoreContentTypes: /^(image)\/.*$/i,
+        ignoreUrls: /\/(logs|symbolicate)$/,
+      }),
+    );
+
     // hookup middleware
     if (Platform.OS !== 'web') {
       if (config.useAsyncStorage) Reactotron.setAsyncStorageHandler?.(AsyncStorage);
@@ -84,6 +94,15 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       Reactotron.useReactNative({
         asyncStorage: config.useAsyncStorage ? undefined : false,
+        editor: false,
+        // there are more options to editor
+        errors: { veto: () => false }, // eslint-disable-line lodash/prefer-constant
+        networking: {
+          // optionally, you can turn it off with false.
+          ignoreUrls: /\/(logs|symbolicate|errorHandler\.js)$/,
+        }, // or turn it off with false
+        overlay: false, // just turning off overlay
+        storybook: false,
       });
     }
 
@@ -129,6 +148,7 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
       description: 'Navigates to a screen by name.',
       handler: (args) => {
         const { route } = args;
+
         if (route) {
           console.log(`Navigating to: ${route}`);
           navigate(route);

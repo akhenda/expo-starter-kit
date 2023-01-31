@@ -13,10 +13,17 @@ export enum ROUTES {
   // Home Navigator
   home = 'Home',
   notifications = 'Notifications',
-  settings = 'Settings',
-  devContact = 'Contact Dev',
-  about = 'About',
-  ratings = 'Ratings',
+  tvShows = 'TV Shows',
+  tvShow = 'TV Show',
+  movies = 'Movies',
+  movie = 'Movie',
   profile = 'Profile',
   editProfile = 'Edit Profile',
+
+  // Modals
+  modal = 'Modal',
+
+  // Others
+  notFound = 'Not Found',
+  offline = 'You are Offline',
 }

@@ -13,9 +13,6 @@ export interface ReactotronConfig {
 
   /** log the initial data that we put into the state on startup? */
   logInitialState?: boolean;
-
-  /** log snapshot changes. */
-  logSnapshots?: boolean;
 }
 
 /**
@@ -25,7 +22,6 @@ export const DEFAULT_REACTOTRON_CONFIG: ReactotronConfig = {
   clearOnLoad: true,
   host: 'localhost',
   logInitialState: true,
-  logSnapshots: false,
   name: 'expo-starter',
   useAsyncStorage: true,
 };

@@ -12,14 +12,12 @@ import { customFontsToLoad } from '@src/theme/typography';
 setupReactotron({
   // clear the Reactotron window when the app loads/reloads
   clearOnLoad: true,
+
   // generally going to be localhost
   host: 'localhost',
 
   // log the initial restored state from AsyncStorage
   logInitialState: true,
-
-  // log out any snapshots as they happen (this is useful for debugging but slow)
-  logSnapshots: false,
 
   // Reactotron can monitor AsyncStorage for you
   useAsyncStorage: true,
