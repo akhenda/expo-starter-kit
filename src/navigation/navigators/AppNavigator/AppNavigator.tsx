@@ -1,5 +1,6 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { AuthNavigator } from '@navigation/navigators/AuthNavigator';
 import { HomeNavigator } from '@navigation/navigators/HomeNavigator';
@@ -8,23 +9,32 @@ import EditProfileScreen from '@screens/Profile/EditProfile';
 
 import type { AppStackParamList } from './AppNavigator.props';
 
-const { Navigator, Screen } = createNativeStackNavigator<AppStackParamList>();
+const { Navigator, Screen } = createSharedElementStackNavigator<AppStackParamList>();
 
-const isAuthenticated = true;
-const isAuthorized = false;
+const fakeToken = { isAuthenticated: true, isAuthorized: true };
 const profile = { firstName: 'John', lastName: 'Doe', phoneNumber: 123 };
+const { isAuthenticated, isAuthorized } = fakeToken;
 
 const AppNavigator = () => {
   return (
     <Navigator>
-      {!isAuthenticated ? (
-        <Screen name="Auth Stack" component={AuthNavigator} options={{ headerShown: false }} />
-      ) : null}
-      {!isAuthorized ? <Screen name="You are not Authorized" component={NotAuthorizedScreen} /> : null}
-      {!profile.firstName || !profile.lastName || !profile.phoneNumber ? (
-        <Screen name="Edit Profile" component={EditProfileScreen} initialParams={{ isFirstTime: true }} />
+      {isAuthenticated ? (
+        isAuthorized ? (
+          !profile.firstName || !profile.lastName || !profile.phoneNumber ? (
+            <Screen name="Edit Profile" component={EditProfileScreen} initialParams={{ isFirstTime: true }} />
+          ) : (
+            <Screen
+              name="Home Stack"
+              component={HomeNavigator}
+              options={{ headerShown: false }}
+              sharedElements={() => ['logo']}
+            />
+          )
+        ) : (
+          <Screen name="You are not Authorized" component={NotAuthorizedScreen} />
+        )
       ) : (
-        <Screen name="Home Stack" component={HomeNavigator} options={{ headerShown: false }} />
+        <Screen name="Auth Stack" component={AuthNavigator} options={{ headerShown: false }} />
       )}
     </Navigator>
   );

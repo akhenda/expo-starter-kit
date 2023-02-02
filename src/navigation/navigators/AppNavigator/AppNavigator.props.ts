@@ -1,8 +1,12 @@
-import type { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
-import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
 
 import type { AuthStackParamList } from '@navigation/navigators/AuthNavigator/AuthNavigator.props';
 import type { HomeDrawerParamList } from '@navigation/navigators/HomeNavigator/HomeNavigator.props';
+import type {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '@navigation/navigators/RootNavigator/RootNavigator.props';
 
 export type AppStackParamList = {
   'Auth Stack': NavigatorScreenParams<AuthStackParamList>;
@@ -11,13 +15,7 @@ export type AppStackParamList = {
   'Edit Profile': { isFirstTime: boolean };
 };
 
-export type AppStackRouteProp<Route extends keyof AppStackParamList> = RouteProp<AppStackParamList, Route>;
-export type AppStackNavigationProp<Route extends keyof AppStackParamList> = NativeStackNavigationProp<
-  AppStackParamList,
-  Route
->;
-
-export type AppStackScreenProps<Route extends keyof AppStackParamList> = NativeStackScreenProps<
-  AppStackParamList,
-  Route
+export type AppStackScreenProps<Screen extends keyof AppStackParamList> = CompositeScreenProps<
+  StackScreenProps<AppStackParamList, Screen>,
+  RootStackScreenProps<keyof RootStackParamList>
 >;

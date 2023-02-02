@@ -5,7 +5,7 @@ import { ActivityAction, startActivityAsync } from 'expo-intent-launcher';
 
 import { Text, View } from '@components/Themed';
 import { EmptyState } from '@src/components/EmptyStateView';
-import { images } from '@src/theme';
+import { lottie } from '@src/theme';
 
 import styles from './NoInternet.styles';
 
@@ -25,8 +25,8 @@ const Offline = () => {
   return (
     <View style={$content}>
       <EmptyState
-        imageSource={images.gifs.noInternet}
-        imageStyle={$image}
+        lottieSource={lottie.noInternet}
+        lottieStyle={$image}
         headerTextStyle={$title}
         subHeaderTextStyle={$description}
         headerText={t('No Internet Connection')}

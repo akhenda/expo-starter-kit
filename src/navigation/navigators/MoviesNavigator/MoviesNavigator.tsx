@@ -1,13 +1,13 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import MoviesScreen from '@screens/Movies';
 
 import type { MoviesStackParamList } from './MoviesNavigator.props';
 
-const { Navigator, Screen } = createNativeStackNavigator<MoviesStackParamList>();
+const { Navigator, Screen } = createStackNavigator<MoviesStackParamList>();
 
-const MoviesNavigator = (): React.ReactElement => {
+const MoviesNavigator = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="Movies" component={MoviesScreen} />

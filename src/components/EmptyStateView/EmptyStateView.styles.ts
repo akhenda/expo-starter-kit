@@ -11,6 +11,12 @@ const $container: ViewStyle = {
   width: '100%',
 };
 
+const $lottie: ViewStyle = {
+  aspectRatio: 1,
+  marginBottom: 40,
+  width: '60%',
+};
+
 const $image: ImageStyle = {
   aspectRatio: 1,
   height: 'auto',
@@ -39,5 +45,6 @@ export default {
   $container,
   $header,
   $image,
+  $lottie,
   $subHeader,
 };

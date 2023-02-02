@@ -1,16 +1,27 @@
 import type React from 'react';
-import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import type { ImageSourcePropType, ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { AnimatedLottieViewProps } from 'lottie-react-native';
 
 export interface EmptyStateViewProps {
   /**
-   * Image source
+   * Lottie animation source
    */
-  imageSource?: number;
+  lottieSource?: AnimatedLottieViewProps['source'];
 
   /**
-   * Main image style
+   * Lottie animation style
    */
-  imageStyle?: ImageStyle | ImageStyle[];
+  lottieStyle?: AnimatedLottieViewProps['style'];
+
+  /**
+   * Image source
+   */
+  imageSource?: ImageSourcePropType;
+
+  /**
+   * Image style
+   */
+  imageStyle?: StyleProp<ImageStyle>;
 
   /**
    * Text of the header
@@ -20,7 +31,7 @@ export interface EmptyStateViewProps {
   /**
    * Style of the header
    */
-  headerTextStyle?: TextStyle | TextStyle[];
+  headerTextStyle?: StyleProp<TextStyle>;
 
   /**
    * Text of Sub header
@@ -30,12 +41,12 @@ export interface EmptyStateViewProps {
   /**
    * Style of the sub header
    */
-  subHeaderTextStyle?: TextStyle | TextStyle[];
+  subHeaderTextStyle?: StyleProp<TextStyle>;
 
   /**
    * Style for the container
    */
-  style?: ViewStyle | ViewStyle[];
+  style?: StyleProp<ViewStyle>;
 
   /**
    * Button Text
@@ -45,12 +56,12 @@ export interface EmptyStateViewProps {
   /**
    * Button Text style
    */
-  buttonTextStyle?: TextStyle | TextStyle[];
+  buttonTextStyle?: StyleProp<TextStyle>;
 
   /**
    * Button Style
    */
-  buttonStyle?: ViewStyle | ViewStyle[];
+  buttonStyle?: StyleProp<ViewStyle>;
 
   /**
    * Callback function

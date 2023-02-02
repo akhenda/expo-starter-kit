@@ -1,5 +1,6 @@
+/* eslint-disable global-require */
 const lottie = {
-  example: '',
+  noInternet: require('~assets/lottie/no-internet.json'),
 };
 
 export default lottie;

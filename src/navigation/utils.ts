@@ -17,11 +17,11 @@ export const navigationRef = createNavigationContainerRef<RootStackParamList>();
  * Gets the current screen from any navigation state.
  */
 export function getActiveRouteName(state?: NavigationState<RootStackParamList>): keyof RootStackParamList {
-  if (!state || !state.index) return 'ExpoStarter';
+  if (!state || !state.index) return 'App Stack';
 
   const route = state.routes[state.index];
 
-  if (!route) return 'ExpoStarter';
+  if (!route) return 'App Stack';
 
   // Found the active route -- return the name
   if (!route.state) return route.name;
@@ -107,7 +107,13 @@ export function useNavigationPersistence(persistenceKey: string = NAVIGATION_PER
 
     if (previousRouteName !== currentRouteName) {
       // track screens.
-      if (__DEV__) console.tron.log?.(currentRouteName); // eslint-disable-line no-console
+      if (__DEV__)
+        // eslint-disable-next-line no-console
+        console.tron.display?.({
+          name: 'currentRouteName',
+          preview: currentRouteName,
+          value: currentRouteName,
+        });
     }
 
     // Save the current route name for later comparison

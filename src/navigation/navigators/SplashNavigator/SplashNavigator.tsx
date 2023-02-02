@@ -1,17 +1,17 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import OnboardingScreen from '@screens/Onboarding';
 import SplashScreen from '@screens/Splash';
 
 import type { SplashStackParamList } from './SplashNavigator.props';
 
-const { Navigator, Screen } = createNativeStackNavigator<SplashStackParamList>();
+const { Navigator, Screen } = createStackNavigator<SplashStackParamList>();
 
-const SplashNavigator = (): React.ReactElement => {
+const SplashNavigator = () => {
   return (
     <Navigator>
-      <Screen name="Splash" component={SplashScreen} />
+      <Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
       <Screen name="Welcome to ExpoStarter" component={OnboardingScreen} />
     </Navigator>
   );

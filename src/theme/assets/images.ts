@@ -18,6 +18,7 @@ const images = {
     person: require('~assets/images/icons/person.png'),
     rocket: require('~assets/images/icons/rocket.png'),
   },
+  logo: require('~assets/images/icons/logo.png'),
 };
 
 export default images;

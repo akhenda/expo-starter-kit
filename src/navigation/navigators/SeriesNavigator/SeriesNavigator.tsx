@@ -1,13 +1,13 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import SeriesScreen from '@screens/Series';
 
 import type { SeriesStackParamList } from './SeriesNavigator.props';
 
-const { Navigator, Screen } = createNativeStackNavigator<SeriesStackParamList>();
+const { Navigator, Screen } = createStackNavigator<SeriesStackParamList>();
 
-const SeriesNavigator = (): React.ReactElement => {
+const SeriesNavigator = () => {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="TV Shows" component={SeriesScreen} />

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Image } from 'react-native';
+import { SharedElement } from 'react-navigation-shared-element';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { useNavigation } from '@react-navigation/native';
 
-import type { AppStackNavigationProp } from '@navigation/navigators/AppNavigator';
 import { MoviesNavigator } from '@navigation/navigators/MoviesNavigator';
 import { ProfileNavigator } from '@navigation/navigators/ProfileNavigator';
 import { SeriesNavigator } from '@navigation/navigators/SeriesNavigator';
@@ -23,23 +22,17 @@ import {
   TVIcon,
 } from '@src/components/Icons';
 import useColorScheme from '@src/hooks/useColorScheme';
-import { colors } from '@src/theme';
+import { colors, images } from '@src/theme';
 
 import type { HomeBottomTabParamList, HomeDrawerParamList } from './HomeNavigator.props';
+import styles from './HomeNavigator.styles';
 
-const InfoIconButton = () => {
-  const colorScheme = useColorScheme();
-  const navigation = useNavigation<AppStackNavigationProp<'Home Stack'>>();
-
+const { $headerImage } = styles;
+const HeaderLogo = () => {
   return (
-    <Pressable
-      onPress={() => navigation.navigate('Home Stack', { screen: 'About' })}
-      style={({ pressed }) => ({
-        opacity: pressed ? 0.5 : 1,
-      })}
-    >
-      <InfoIcon size={25} color={colors[colorScheme].text.primary} marginRight={15} />
-    </Pressable>
+    <SharedElement id="logo">
+      <Image style={$headerImage} source={images.logo} />
+    </SharedElement>
   );
 };
 
@@ -50,19 +43,19 @@ const BottomTab = createBottomTabNavigator<HomeBottomTabParamList>();
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const HomeBottomNavigator = (): React.ReactElement => {
+const HomeBottomNavigator = () => {
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TV Shows Stack"
+      initialRouteName="Series Stack"
       backBehavior="none"
       screenOptions={{
         tabBarActiveTintColor: colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="TV Shows Stack"
+        name="Series Stack"
         component={SeriesNavigator}
         options={{
           headerShown: false,
@@ -89,8 +82,8 @@ const HomeBottomNavigator = (): React.ReactElement => {
   );
 };
 
-const HomeNavigator = (): React.ReactElement => (
-  <Drawer.Navigator screenOptions={{ headerRight: InfoIconButton }}>
+const HomeNavigator = () => (
+  <Drawer.Navigator screenOptions={{ headerRight: HeaderLogo }} backBehavior="none">
     <Drawer.Screen
       name="Home Tabs"
       component={HomeBottomNavigator}

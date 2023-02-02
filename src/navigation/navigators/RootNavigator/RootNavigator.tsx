@@ -1,5 +1,5 @@
-import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { SplashNavigator } from '@navigation/navigators/SplashNavigator';
 import { NoInternet } from '@src/components';
@@ -8,24 +8,22 @@ import ModalScreen from '@src/screens/ModalScreen';
 
 import type { RootStackParamList } from './RootNavigator.props';
 
-const { Navigator, Screen, Group } = createNativeStackNavigator<RootStackParamList>();
-
-const isConnected = true;
+const { Navigator, Screen } = createSharedElementStackNavigator<RootStackParamList>();
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
  * https://reactnavigation.org/docs/modal
  */
 const RootNavigator = () => {
+  const [isConnected] = useState(true);
+
   return (
-    <Navigator initialRouteName="App Stack" screenOptions={{ headerShown: false }}>
+    <Navigator initialRouteName="Splash Stack" screenOptions={{ headerShown: false }}>
       {isConnected ? (
         <>
-          <Screen name="App Stack" component={AppNavigator} />
           <Screen name="Splash Stack" component={SplashNavigator} />
-          <Group screenOptions={{ presentation: 'modal' }}>
-            <Screen name="Modal" component={ModalScreen} />
-          </Group>
+          <Screen name="App Stack" component={AppNavigator} />
+          <Screen name="Modal" component={ModalScreen} options={{ presentation: 'modal' }} />
         </>
       ) : (
         <Screen name="You are Offline" component={NoInternet} />

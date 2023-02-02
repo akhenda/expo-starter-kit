@@ -10,12 +10,7 @@ const $content: ViewStyle = {
   justifyContent: 'center',
 };
 
-const $image: ImageStyle = {
-  aspectRatio: 1,
-  height: 'auto',
-  marginBottom: 40,
-  width: '60%',
-};
+const $image: ImageStyle = {};
 
 const $title: TextStyle = {
   fontSize: 22,

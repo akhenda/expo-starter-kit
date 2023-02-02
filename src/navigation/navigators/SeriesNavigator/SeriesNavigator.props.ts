@@ -1,28 +1,17 @@
-import type { RouteProp } from '@react-navigation/native';
-import type { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { CompositeScreenProps } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
+
+import type {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '@navigation/navigators/RootNavigator/RootNavigator.props';
 
 export type SeriesStackParamList = {
   'TV Shows': undefined;
   'TV Show': undefined;
 };
 
-export type SeriesStackRouteProp<Route extends keyof SeriesStackParamList> = RouteProp<SeriesStackParamList, Route>;
-export type SeriesStackNavigationProp<Route extends keyof SeriesStackParamList> = NativeStackNavigationProp<
-  SeriesStackParamList,
-  Route
+export type SeriesStackScreenProps<Screen extends keyof SeriesStackParamList> = CompositeScreenProps<
+  StackScreenProps<SeriesStackParamList, Screen>,
+  RootStackScreenProps<keyof RootStackParamList>
 >;
-
-export type SeriesStackScreenProps<Route extends keyof SeriesStackParamList> = NativeStackScreenProps<
-  SeriesStackParamList,
-  Route
->;
-
-export interface TVShowsScreenProps {
-  navigation: SeriesStackNavigationProp<'TV Shows'>;
-  route: SeriesStackRouteProp<'TV Shows'>;
-}
-
-export interface TVShowScreenProps {
-  navigation: SeriesStackNavigationProp<'TV Show'>;
-  route: SeriesStackRouteProp<'TV Show'>;
-}
