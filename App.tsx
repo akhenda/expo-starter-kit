@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 
-import App from './src';
+import '@src/config';
 
-export default function MainApp() {
+import Main from './src';
+
+export default function App() {
   return (
     <>
       <StatusBar style="auto" backgroundColor="transparent" translucent />
-      <App />
+      <Main />
     </>
   );
 }

@@ -1,3 +1,5 @@
+import type { NavigationContainerProps, Theme } from '@react-navigation/native';
+
 import type { RootStackParamList } from '@navigation/navigators/RootNavigator';
 
 /**
@@ -11,3 +13,9 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
+
+export type NavigationProps = {
+  initialState: NavigationContainerProps['initialState'];
+  theme?: Theme;
+  onStateChange: NavigationContainerProps['onStateChange'];
+};

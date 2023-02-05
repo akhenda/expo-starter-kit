@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -6,6 +6,10 @@ import * as SplashScreen from 'expo-splash-screen';
 import { setupReactotron } from '@src/config/libs/reactotron';
 import { useNavigationPersistence } from '@src/navigation/utils';
 import { customFontsToLoad } from '@src/theme/typography';
+
+import useTheme from './useTheme';
+
+SplashScreen.preventAutoHideAsync();
 
 // Set up Reactotron, which is a free desktop app for inspecting and debugging
 // React Native apps. Learn more here: https://github.com/infinitered/reactotron
@@ -24,19 +28,20 @@ setupReactotron({
 });
 
 export default function useOnAppStart() {
-  const [isFontsLoadingComplete, setFontsLoadingComplete] = useState(false);
+  const { navTheme, statusBarBGColor, statusBarStyle } = useTheme();
   const {
     initialNavigationState,
     onNavigationStateChange,
     isRestored: isNavigationStateRestored,
   } = useNavigationPersistence();
 
+  const [appIsReady, setAppIsReady] = useState(false);
+  const [isFontsLoadingComplete, setFontsLoadingComplete] = useState(false);
+
   // Load any resources or data that we need prior to rendering the app
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
-        SplashScreen.preventAutoHideAsync();
-
         // Load fonts
         await Font.loadAsync({
           ...FontAwesome.font,
@@ -63,10 +68,29 @@ export default function useOnAppStart() {
     // Note: (vanilla iOS) You might notice the splash-screen logo change size. This happens in debug/development mode. Try building the app for release.
     if (isNavigationStateRestored && isFontsLoadingComplete) {
       setTimeout(() => {
-        SplashScreen.hideAsync();
-      }, 500);
+        setAppIsReady(true);
+      }, 200);
     }
   }, [isFontsLoadingComplete, isNavigationStateRestored]);
 
-  return { initialNavigationState, isFontsLoadingComplete, isNavigationStateRestored, onNavigationStateChange };
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  return {
+    appIsReady,
+    initialNavigationState,
+    navTheme,
+    onLayoutRootView,
+    onNavigationStateChange,
+    statusBarBGColor,
+    statusBarStyle,
+  };
 }

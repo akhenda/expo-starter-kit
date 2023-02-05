@@ -103,87 +103,87 @@ const styles = (theme: 'light' | 'dark') => ({
   h1: {
     ...base(theme).headings,
     fontSize: sizes.h1,
-    lineHeight: 1.167,
+    lineHeight: 1.167 * sizes.h1,
   },
   h2: {
     ...base(theme).headings,
     fontSize: sizes.h2,
-    lineHeight: 1.2,
+    lineHeight: 1.2 * sizes.h2,
   },
   h3: {
     ...base(theme).headings,
     fontSize: sizes.h3,
-    lineHeight: 1.167,
-    fontWeight: 400,
+    lineHeight: 1.167 * sizes.h3,
+    fontWeight: '400',
   },
   h4: {
     ...base(theme).headings,
     fontSize: sizes.h4,
-    lineHeight: 1.235,
-    fontWeight: 400,
+    lineHeight: 1.235 * sizes.h4,
+    fontWeight: '400',
   },
   h5: {
     ...base(theme).headings,
     fontSize: sizes.h5,
-    lineHeight: 1.334,
-    fontWeight: 400,
+    lineHeight: 1.334 * sizes.h5,
+    fontWeight: '400',
   },
   h6: {
     ...base(theme).headings,
     fontSize: sizes.h6,
-    lineHeight: 1.6,
-    fontWeight: 500,
+    lineHeight: 1.6 * sizes.h6,
+    fontWeight: '500',
   },
   subtitle1: {
     // h6
     ...base(theme).body,
     fontSize: sizes.subtitle1,
-    lineHeight: 1.75,
+    lineHeight: 1.75 * sizes.subtitle1,
   },
   subtitle2: {
     // h6
     ...base(theme).body,
     fontSize: sizes.subtitle2,
-    fontWeight: 500,
-    lineHeight: 1.57,
+    fontWeight: '500',
+    lineHeight: 1.57 * sizes.subtitle2,
   },
   paragraph: {
     // p
     ...base(theme).body,
     fontSize: sizes.body1,
-    lineHeight: 1.5,
+    lineHeight: 1.5 * sizes.body1,
   },
   body1: {
     // p
     ...base(theme).body,
     fontSize: sizes.body1,
-    lineHeight: 1.5,
+    lineHeight: 1.5 * sizes.body1,
   },
   body2: {
     // p
     ...base(theme).body,
     fontSize: sizes.body2,
-    lineHeight: 1.43,
+    lineHeight: 1.43 * sizes.body2,
   },
   button: {
     // span
     ...base(theme).body,
     fontSize: sizes.button,
-    fontWeight: 500,
-    lineHeight: 1.75,
+    fontWeight: '500',
+    lineHeight: 1.75 * sizes.button,
     textTransform: 'uppercase',
   },
   caption: {
     // span
     ...base(theme).body,
     fontSize: sizes.caption,
-    lineHeight: 1.66,
+    lineHeight: 1.66 * sizes.caption,
   },
   overline: {
     // span
     ...base(theme).body,
     fontSize: sizes.overline,
-    lineHeight: 2.66,
+    lineHeight: 2.66 * sizes.overline,
     textTransform: 'uppercase',
   },
 });

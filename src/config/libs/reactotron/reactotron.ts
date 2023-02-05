@@ -39,7 +39,7 @@ let reactotronIsSetUp = false;
  *
  *   console.tron.log('hello world')
  *
- * You can also import Reactotron yourself from ./reactotronClient
+ * You can also import Reactotron yourself from ./client
  * and use it directly, like Reactotron.log('hello world')
  */
 declare global {

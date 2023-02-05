@@ -24,4 +24,5 @@ if (__DEV__) {
  */
 export default {
   API_URL: 'https://api.themoviedb.org/3/',
+  USE_ZUSTAND_DEV_TOOLS: false,
 };

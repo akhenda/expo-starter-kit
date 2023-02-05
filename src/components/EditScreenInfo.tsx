@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
-import Colors from '../config/constants/Colors';
+import { colors } from '@src/theme';
 
 import MonoText from './StyledText';
 import { Text, View } from './Themed';
@@ -66,7 +66,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
 
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+          <Text style={styles.helpLinkText} lightColor={colors.light.tint}>
             Tap here if your app doesn&apos;t automatically update after making changes
           </Text>
         </TouchableOpacity>

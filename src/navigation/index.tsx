@@ -4,25 +4,21 @@
  * https://www.jakallergis.com/proper-react-navigation-v-5-with-type-script
  */
 import * as React from 'react';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-
-import useColorScheme from '@hooks/useColorScheme';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { RootNavigator } from './navigators/RootNavigator';
 import { useLinkingConfig } from './config';
+import type { NavigationProps } from './types';
 import { navigationRef } from './utils';
 
-export type NavigationProps = Partial<React.ComponentProps<typeof NavigationContainer>> & object;
-
-export default function Navigation({ initialState, onStateChange }: Partial<NavigationProps>) {
-  const colorScheme = useColorScheme();
+export default function Navigation({ initialState, theme, onStateChange }: NavigationProps) {
   const linkingConfig = useLinkingConfig();
 
   return (
     <NavigationContainer
       linking={linkingConfig}
       ref={navigationRef}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+      theme={theme}
       initialState={initialState}
       onStateChange={onStateChange}
     >

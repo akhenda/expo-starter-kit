@@ -30,6 +30,9 @@ export const PhoneIcon = (props: IoniconsIconProps) => (
 export const MoviesIcon = (props: MaterialIconsIconProps) => (
   <Icon family={IconType.MATERIAL} name="local-movies" {...props} />
 );
+export const PaletteIcon = (props: IoniconsIconProps) => (
+  <Icon family={IconType.IONICONS} name="color-palette" {...props} />
+);
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -44,6 +47,7 @@ export default {
   LabyBugIcon,
   MobileIcon,
   MoviesIcon,
+  PaletteIcon,
   PersonIcon,
   PhoneIcon,
   SettingsIcon,

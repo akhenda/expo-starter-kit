@@ -51,7 +51,7 @@ const HomeBottomNavigator = () => {
       initialRouteName="Series Stack"
       backBehavior="none"
       screenOptions={{
-        tabBarActiveTintColor: colors[colorScheme].tint,
+        tabBarActiveTintColor: colors[colorScheme].text.primary,
       }}
     >
       <BottomTab.Screen

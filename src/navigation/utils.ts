@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BackHandler } from 'react-native';
-import { createNavigationContainerRef, NavigationState, PartialState, useNavigation } from '@react-navigation/native';
+import { createNavigationContainerRef, NavigationState, useNavigation } from '@react-navigation/native';
 
 import type { PersistNavigationConfig } from '@config/config.base';
 import Config from '@src/config';
@@ -49,7 +49,7 @@ export function useBackButtonHandler(canExit: (routeName: keyof RootStackParamLi
       if (!navigationRef.isReady()) return false;
 
       // grab the current route
-      const routeName = getActiveRouteName(navigationRef.getRootState());
+      const routeName = getActiveRouteName(navigationRef.getRootState() as NavigationState<RootStackParamList>);
 
       // are we allowed to exit?
       if (canExitRef.current(routeName)) {
@@ -98,12 +98,12 @@ export function useNavigationPersistence(persistenceKey: string = NAVIGATION_PER
   const routeNameRef = useRef<string | undefined>();
   const initNavState = navigationRestoredDefaultState(Config.persistNavigation);
 
-  const [initialNavigationState, setInitialNavigationState] = useState<PartialState<NavigationState>>();
+  const [initialNavigationState, setInitialNavigationState] = useState<NavigationState<RootStackParamList>>();
   const [isRestored, setIsRestored] = useState(initNavState);
 
-  const onNavigationStateChange = (state?: Readonly<NavigationState<RootStackParamList>>) => {
+  const onNavigationStateChange = (state?: NavigationState) => {
     const previousRouteName = routeNameRef.current;
-    const currentRouteName = getActiveRouteName(state);
+    const currentRouteName = getActiveRouteName(state as NavigationState<RootStackParamList>);
 
     if (previousRouteName !== currentRouteName) {
       // track screens.
@@ -125,7 +125,7 @@ export function useNavigationPersistence(persistenceKey: string = NAVIGATION_PER
 
   const restoreState = useCallback(async () => {
     try {
-      const state = (await storage.load(persistenceKey)) as PartialState<NavigationState>;
+      const state = (await storage.load(persistenceKey)) as NavigationState<RootStackParamList>;
 
       if (state) setInitialNavigationState(state);
     } finally {

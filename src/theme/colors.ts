@@ -129,8 +129,8 @@ const derived = {
 
   background: {
     dark: {
-      default: '#194351',
-      paper: '#29576e',
+      default: stargateColors.midnightGreenEagleGreen,
+      paper: stargateColors.blueSapphire,
     },
     light: {
       default: '#fafafa',
@@ -152,6 +152,8 @@ export const colors = {
    */
   transparent: 'rgba(0, 0, 0, 0)',
 
+  derived,
+
   dark: {
     tint: palette.info100,
     border: derived.text.dark.primary,
@@ -171,5 +173,59 @@ export const colors = {
     errorBackground: derived.error.light,
     text: derived.text.light,
     background: derived.background.light,
+  },
+
+  rnuilib: {
+    colors: {
+      bgDark: derived.background.dark.default,
+      bgDarkPaper: derived.background.dark.paper,
+      bgLight: derived.background.light.default,
+      bgLightPaper: derived.background.light.paper,
+      black: derived.text.light.primary,
+      blacker: derived.text.light.secondary,
+      blackish: derived.text.light.disabled,
+      error: derived.error.main,
+      info: derived.info.main,
+      primary: derived.primary.main,
+      secondary: derived.secondary.main,
+      success: derived.success.main,
+      warning: derived.warning.main,
+      white: derived.text.dark.primary,
+      whiter: derived.text.dark.secondary,
+      whitish: derived.text.dark.disabled,
+    },
+
+    themes: {
+      system: {},
+      default: {},
+      dark: {
+        tint: palette.info100,
+        border: derived.text.dark.primary,
+        divider: 'rgba(255, 255, 255, 0.12)',
+        separator: stargateColors.steelBlue,
+        error: derived.error.main,
+        errorBg: derived.error.light,
+        text: derived.text.dark.primary,
+        textSecondary: derived.text.dark.secondary,
+        textDisabled: derived.text.dark.disabled,
+        textHint: derived.text.dark.hint,
+        bg: derived.background.dark.default,
+        bgPaper: derived.background.dark.paper,
+      },
+      light: {
+        tint: stargateColors.blueGreen,
+        border: derived.text.light.primary,
+        divider: 'rgba(0, 0, 0, 0.12)',
+        separator: stargateColors.steelBlue,
+        error: derived.error.main,
+        errorBg: derived.error.light,
+        text: derived.text.light.primary,
+        textSecondary: derived.text.light.secondary,
+        textDisabled: derived.text.light.disabled,
+        textHint: derived.text.light.hint,
+        bg: derived.background.light.default,
+        bgPaper: derived.background.light.paper,
+      },
+    },
   },
 } as const;

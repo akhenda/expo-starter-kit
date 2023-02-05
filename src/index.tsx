@@ -9,28 +9,32 @@
  * The app navigation resides in ./src/navigation, so head over there
  * if you're interested in adding screens and navigators.
  */
-// eslint-disable-next-line simple-import-sort/imports
-import './config/libs/i18n';
-
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
-import useOnAppStart from './hooks/useOnAppStart';
-import Navigation from './navigation';
 import { ErrorBoundary } from './screens/ErrorScreen/ErrorBoundary';
 import Config from './config';
+import { useOnAppStart } from './hooks';
+import Navigation from './navigation';
 
-export default function App() {
-  const { isFontsLoadingComplete, isNavigationStateRestored, initialNavigationState, onNavigationStateChange } =
-    useOnAppStart();
+export default function Main() {
+  const {
+    appIsReady,
+    initialNavigationState,
+    onNavigationStateChange,
+    navTheme,
+    statusBarBGColor,
+    statusBarStyle,
+    onLayoutRootView,
+  } = useOnAppStart();
 
-  if (!isFontsLoadingComplete || !isNavigationStateRestored) return null;
+  if (!appIsReady) return null;
 
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <ErrorBoundary catchErrors={Config.catchErrors}>
-        <StatusBar />
-        <Navigation initialState={initialNavigationState} onStateChange={onNavigationStateChange} />
+    <SafeAreaProvider initialMetrics={initialWindowMetrics} onLayout={onLayoutRootView}>
+      <ErrorBoundary catchErrors={Config.catchErrors} navTheme={navTheme}>
+        <StatusBar style={statusBarStyle} backgroundColor={statusBarBGColor} />
+        <Navigation initialState={initialNavigationState} onStateChange={onNavigationStateChange} theme={navTheme} />
       </ErrorBoundary>
     </SafeAreaProvider>
   );

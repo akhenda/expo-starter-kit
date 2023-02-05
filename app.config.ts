@@ -1,12 +1,12 @@
 const LIGHT_SPLASH = {
   backgroundColor: '#FFFFFF',
-  image: './src/assets/images/splash.png',
+  // image: './src/assets/images/splash.png',
   resizeMode: 'contain',
 };
 
 const DARK_SPLASH = {
   backgroundColor: '#194351',
-  image: './src/assets/images/splash.png',
+  // image: './src/assets/images/splash.png',
   resizeMode: 'contain',
 };
 

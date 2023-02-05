@@ -1,13 +1,17 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
+import type { Theme } from '@react-navigation/native';
+import isEqual from 'lodash/isEqual';
 
 import { ErrorDetails } from './ErrorDetails';
 
 interface Props {
   children: ReactNode;
   catchErrors: 'always' | 'dev' | 'prod' | 'never';
+  navTheme: Theme;
 }
 
 interface State {
+  hasError: boolean;
   error: Error | null;
   errorInfo: ErrorInfo | null;
 }
@@ -18,10 +22,15 @@ interface State {
  * class component because according to the documentation, only class
  * components can be error boundaries.
  *
- * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Error-Boundary.md)
  * - [React Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
  */
 export class ErrorBoundary extends Component<Props, State> {
+  static getDerivedStateFromError() {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  // Reset the error back to null
   // eslint-disable-next-line react/sort-comp
   resetError = () => {
     this.setState({ error: null, errorInfo: null });
@@ -30,14 +39,15 @@ export class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.state = { error: null, errorInfo: null };
+    this.state = { error: null, errorInfo: null, hasError: false };
   }
 
-  // Reset the error back to null
-
   // To avoid unnecessary re-renders
-  shouldComponentUpdate(_: Readonly<Props>, nextState: Readonly<State>): boolean {
+  shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<State>): boolean {
     const { error } = this.state;
+    const { navTheme } = this.props;
+
+    if (!isEqual(nextProps.navTheme, navTheme)) return true;
 
     return nextState.error !== error;
   }
@@ -65,9 +75,9 @@ export class ErrorBoundary extends Component<Props, State> {
   // Render an error UI if there's an error; otherwise, render children
   render() {
     const { children } = this.props;
-    const { error, errorInfo } = this.state;
+    const { hasError, error, errorInfo } = this.state;
 
-    return this.isEnabled() && error ? (
+    return this.isEnabled() && hasError && error ? (
       <ErrorDetails onReset={this.resetError} error={error} errorInfo={errorInfo} />
     ) : (
       children
