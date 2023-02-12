@@ -3,7 +3,7 @@ import { createStore } from '@udecode/zustood';
 import { createJSONStorage } from 'zustand/middleware';
 
 import Config from '@src/config';
-import { zustandMMKVStorage } from '@src/utils/storage/mmkv';
+import { zustandMMKVStorage } from '@src/services/storage/mmkv';
 
 const APP_STATE_STORAGE_KEY = '@AppState';
 

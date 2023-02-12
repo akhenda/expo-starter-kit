@@ -15,6 +15,7 @@ export default function useTheme() {
   const [navTheme, setNavTheme] = useState<Theme>(DefaultTheme);
   const [statusBarBGColor, setStatusBarBGColor] = useState('light');
   const [statusBarStyle, setStatusBarStyle] = useState<StatusBarStyle>('auto');
+  const [headerBlurEffect, setHeaderBlurEffect] = useState<'regular' | 'light' | 'dark'>('light');
 
   /**
    * Callback funtion to load RNUILib typographies.
@@ -123,7 +124,13 @@ export default function useTheme() {
     }
 
     setStatusBarBGColor(colors.rnuilib.themes[appearance as 'light' | 'dark'].bgPaper);
+    setHeaderBlurEffect(theme === 'default' ? 'regular' : appearance);
   }, [theme, colorScheme]);
 
-  return { navTheme, statusBarBGColor, statusBarStyle };
+  return {
+    headerBlurEffect,
+    navTheme,
+    statusBarBGColor,
+    statusBarStyle,
+  };
 }

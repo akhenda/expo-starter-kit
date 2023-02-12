@@ -18,10 +18,11 @@
 import { Platform } from 'react-native';
 import { ArgType } from 'reactotron-core-client'; // eslint-disable-line import/no-extraneous-dependencies
 import { networking } from 'reactotron-react-native'; // eslint-disable-line import/no-extraneous-dependencies
+import ReactotronFlipper from 'reactotron-react-native/dist/flipper'; // eslint-disable-line import/no-extraneous-dependencies
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { goBack, navigate, resetRoot } from '@src/navigation/utils';
-import { asyncStorage } from '@utils/storage';
+import { asyncStorage } from '@src/services/storage';
 
 import { Reactotron } from './client';
 import { DEFAULT_REACTOTRON_CONFIG, ReactotronConfig } from './config';
@@ -76,6 +77,7 @@ export function setupReactotron(customConfig: ReactotronConfig = {}) {
 
     // configure reactotron
     Reactotron.configure({
+      createSocket: (path) => new ReactotronFlipper(path),
       host: config.host,
       name: config.name,
     });

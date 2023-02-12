@@ -1,3 +1,4 @@
+import type { StyleProp, ViewStyle } from 'react-native';
 import { AnimatedImage } from 'react-native-ui-lib';
 import { SharedElement } from 'react-navigation-shared-element';
 import LottieView from 'lottie-react-native';
@@ -8,7 +9,7 @@ import type { SplashStackScreenProps } from '@src/navigation/navigators/SplashNa
 import { images, lottie } from '@src/theme';
 import { delay } from '@src/utils/common';
 
-const $container = { alignItems: 'center', flex: 1, justifyContent: 'center' };
+const $container: StyleProp<ViewStyle> = { alignItems: 'center', flex: 1, justifyContent: 'center' };
 const $image = { height: 102, width: 102 };
 const $lottie = { height: 212, width: 212 };
 

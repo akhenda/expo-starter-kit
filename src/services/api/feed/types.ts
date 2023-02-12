@@ -1,6 +1,6 @@
-import type { EpisodeItem } from './episodes';
+import type { EpisodeItem } from '@services/api/episodes/types';
 
-export interface ApiFeedResponse {
+export interface FeedApiResponse {
   status: string;
   feed: {
     url: string;

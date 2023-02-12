@@ -2,7 +2,7 @@ import { getLocales } from 'expo-localization';
 import type { ModuleType } from 'i18next';
 import noop from 'lodash/noop';
 
-import { mmkv as storage } from '@src/utils/storage';
+import { mmkv as storage } from '@src/services/storage';
 
 const I18N_STORAGE_KEY = '@AppIntl:language';
 

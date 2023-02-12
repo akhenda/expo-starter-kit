@@ -1,2 +1,3 @@
 export * from './api';
-export * from './types';
+export * from './types/error';
+export * from './types/response';

@@ -35,6 +35,7 @@ specifiers:
   babel-plugin-i18next-extract: ^0.9.0
   babel-plugin-module-resolver: ^5.0.0
   babel-plugin-transform-remove-console: ^6.9.4
+  cerealizr: 1.0.1-alpha
   commitizen: ^4.2.6
   eslint: ^8.32.0
   eslint-config-heimdall: ^1.4.2
@@ -110,6 +111,7 @@ dependencies:
   '@react-navigation/stack': 6.3.12_aqpti6yniaagvk37z4iyeuoy7y
   '@udecode/zustood': 1.1.3_paymrr5h4raj7gahbpj2fkfrju
   apisauce: 2.1.6
+  cerealizr: 1.0.1-alpha
   expo: 47.0.13_@babel+core@7.20.12
   expo-asset: 8.7.0_expo@47.0.13
   expo-community-flipper: 47.0.0_expo@47.0.13
@@ -4410,6 +4412,13 @@ packages:
     dependencies:
       rsvp: 4.8.5
     dev: true
+
+  /cerealizr/1.0.1-alpha:
+    resolution: {integrity: sha512-x22AtS8f8N/OYdsfpptuIC4CuPUiFQa4IieK9U1T27dKZoXvxTtymqhLRwjBGrmVgCEcy8U2Ri+d9hSeClj/gQ==}
+    dependencies:
+      lodash.camelcase: 4.3.0
+      lodash.snakecase: 4.1.1
+    dev: false
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -9053,7 +9062,6 @@ packages:
 
   /lodash.camelcase/4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
-    dev: true
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
@@ -9100,7 +9108,6 @@ packages:
 
   /lodash.snakecase/4.1.1:
     resolution: {integrity: sha512-QZ1d4xoBHYUeuouhEq3lk3Uq7ldgyFXGBhg04+oRLnIz8o9T65Eh+8YdroUwn846zchkA9yDsDl5CVVaV2nqYw==}
-    dev: true
 
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}

@@ -5,7 +5,7 @@ import { createNavigationContainerRef, NavigationState, useNavigation } from '@r
 import type { PersistNavigationConfig } from '@config/config.base';
 import Config from '@src/config';
 import { useIsMounted } from '@src/hooks/useLifecycle';
-import { mmkvStorage as storage } from '@utils/storage';
+import { mmkvStorage as storage } from '@src/services/storage';
 
 import type { RootStackParamList } from './navigators/RootNavigator';
 

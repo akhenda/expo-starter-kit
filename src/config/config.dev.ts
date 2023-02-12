@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { connectToDevTools } from 'react-devtools-core';
 
-import storage from '@src/utils/storage/mmkv';
+import storage from '@src/services/storage/mmkv';
 
 if (__DEV__) {
   // eslint-disable-next-line import/no-extraneous-dependencies, global-require

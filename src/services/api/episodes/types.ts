@@ -1,3 +1,5 @@
+import type { ApiGetResult } from '@src/services/api/types/response';
+
 export interface EpisodeItem {
   title: string;
   pubDate: string;
@@ -16,3 +18,5 @@ export interface EpisodeItem {
   };
   categories: string[];
 }
+
+export type EpisodeApiGetResult = ApiGetResult<{ episodes: EpisodeItem[] }>;

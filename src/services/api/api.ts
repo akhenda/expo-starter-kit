@@ -2,13 +2,17 @@
  * This Api class lets you define an API endpoint and methods to request
  * data and process it.
  */
-import { ApiResponse, ApisauceInstance, create } from 'apisauce';
-import isError from 'lodash/isError';
+import { ApisauceInstance, create, Monitor } from 'apisauce';
+import { CamelcaseSerializer, SnakecaseSerializer } from 'cerealizr';
 
 import Config from '@src/config';
+import { Reactotron } from '@src/config/libs/reactotron/client';
 
-import { GeneralApiError, getGeneralApiError } from './error';
-import type { ApiConfig, ApiFeedResponse, EpisodeItem } from './types';
+import type { ApiConfig } from './types/config';
+import { EpisodesApi } from './episodes';
+
+const snakecaseSerializer = new SnakecaseSerializer();
+const camelcaseSerializer = new CamelcaseSerializer();
 
 /**
  * Configuring the apisauce instance.
@@ -25,7 +29,9 @@ export const DEFAULT_API_CONFIG: ApiConfig = {
 export class Api {
   apisauce: ApisauceInstance;
 
-  config: ApiConfig;
+  private config: ApiConfig;
+
+  episodes: EpisodesApi;
 
   /**
    * Set up our API instance. Keep this lightweight!
@@ -36,45 +42,66 @@ export class Api {
       baseURL: this.config.url,
       headers: {
         Accept: 'application/json',
+        'Accept-Language': 'en',
+        'Content-Type': 'application/json',
       },
       timeout: this.config.timeout,
     });
+
+    if (__DEV__) this.addMonitors();
+    this.setAuthorizationHeader();
+    this.addRequestTransforms();
+    this.addResponseTransforms();
+
+    this.episodes = new EpisodesApi(this.apisauce);
   }
 
-  // @demo remove-block-start
   /**
-   * Gets a list of recent React Native Radio episodes.
+   * Attach a monitor that fires with each request
    */
-  async getEpisodes(): Promise<{ kind: 'ok'; episodes: EpisodeItem[] } | GeneralApiError> {
-    // make the api call
-    const response: ApiResponse<ApiFeedResponse> = await this.apisauce.get(
-      `api.json?rss_url=https%3A%2F%2Ffeeds.simplecast.com%2FhEI_f9Dx`,
-    );
-
-    // the typical ways to die when calling an api
-    if (!response.ok) {
-      const problem = getGeneralApiError(response);
-      if (problem) return problem;
-    }
-
-    // transform the data into the format we are expecting
-    try {
-      const rawData = response.data;
-
-      // This is where we transform the data into the shape we expect for our MST model.
-      const episodes = (rawData?.items || []).map((raw) => ({
-        ...raw,
-      }));
-
-      return { episodes, kind: 'ok' };
-    } catch (error) {
-      if (__DEV__ && isError(error)) {
+  private addMonitors() {
+    this.apisauce.addMonitor((Reactotron as unknown as typeof Reactotron & { apisauce: Monitor }).apisauce);
+    this.apisauce.addMonitor((response) => {
+      if (response.ok) {
         // eslint-disable-next-line no-console
-        console.tron.error?.(`Bad data: ${error.message}\n${response.data}`, error.stack);
+        console.log(
+          `%c API_RESPONSE! %c${response.config?.url}`,
+          'background: #222; color: #bada55; font-size:16px',
+          'background:red;color:white;',
+        );
+      } else {
+        // eslint-disable-next-line no-console
+        console.log(
+          `%c API_RESPONSE! %c${response.config?.url}`,
+          'background: #222; color: #ff7788; font-size:16px',
+          'background:red;color:white;',
+        );
       }
 
-      return { kind: 'bad-data' };
-    }
+      // eslint-disable-next-line no-console
+      console.log(response.data);
+    });
+  }
+
+  private setAuthorizationHeader() {
+    this.apisauce.setHeader('Authorization', 'Bearer token');
+  }
+
+  private addRequestTransforms() {
+    this.apisauce.addRequestTransform((request) => {
+      if (request.data) request.data = snakecaseSerializer.serialize(request.data);
+      if (request.params) request.params = snakecaseSerializer.serialize(request.params);
+    });
+  }
+
+  private addResponseTransforms() {
+    this.apisauce.addResponseTransform((response) => {
+      if (response.ok) {
+        response.data = camelcaseSerializer.serialize(response.data);
+      } else {
+        throw { data: response.data, problem: response.problem, status: response.status } as unknown as Error;
+      }
+    });
   }
 }
 
