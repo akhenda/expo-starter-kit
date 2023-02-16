@@ -1,0 +1,25 @@
+/**
+ * https://reactnavigation.org/docs/typescript/#type-checking-screens-and-params-in-nested-navigator
+ */
+import type { DrawerContentComponentProps, DrawerNavigationProp } from '@react-navigation/drawer';
+import type { CompositeScreenProps, RouteProp } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
+
+import type {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '@navigation/navigators/RootNavigator/RootNavigator.props';
+
+export type {{pascalCase name}}DrawerParamList = {
+  '{{titleCase name}}': undefined;
+};
+
+export type {{pascalCase name}}DrawerProps = DrawerContentComponentProps & {
+  navigation: DrawerNavigationProp<{{pascalCase name}}DrawerParamList, '{{titleCase name}}'>;
+  route: RouteProp<{{pascalCase name}}DrawerParamList, '{{titleCase name}}'>;
+};
+
+export type {{pascalCase name}}DrawerScreenProps<Screen extends keyof {{pascalCase name}}DrawerParamList> = CompositeScreenProps<
+  StackScreenProps<{{pascalCase name}}DrawerParamList, Screen>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;

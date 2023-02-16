@@ -1,0 +1,19 @@
+/**
+ * https://reactnavigation.org/docs/typescript/#type-checking-screens-and-params-in-nested-navigator
+ */
+import type { CompositeScreenProps } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
+
+import type {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '@navigation/navigators/RootNavigator/RootNavigator.props';
+
+export type {{pascalCase name}}StackParamList = {
+  '{{titleCase name}}': undefined;
+};
+
+export type {{pascalCase name}}StackScreenProps<Screen extends keyof {{pascalCase name}}StackParamList> = CompositeScreenProps<
+  StackScreenProps<{{pascalCase name}}StackParamList, Screen>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;

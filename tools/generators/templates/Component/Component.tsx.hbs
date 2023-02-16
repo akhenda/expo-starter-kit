@@ -1,0 +1,15 @@
+import React from 'react';
+import { Text, View } from 'react-native-ui-lib';
+
+import { $container } from './{{pascalCase name}}.styles';
+import type { {{pascalCase name}}Props } from './{{pascalCase name}}.types';
+
+const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props): React.ReactElement => {
+  return (
+    <View style={[$container, $style]}>
+      <Text>{{pascalCase name}}</Text>
+    </View>
+  );
+};
+
+export default {{pascalCase name}};

@@ -1,0 +1,21 @@
+/**
+ * https://reactnavigation.org/docs/typescript/#type-checking-screens-and-params-in-nested-navigator
+ */
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import type { CompositeScreenProps } from '@react-navigation/native';
+
+import type {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '@navigation/navigators/RootNavigator/RootNavigator.props';
+
+export type {{pascalCase name}}TabsParamList = {
+  '{{titleCase name}}': undefined;
+};
+
+export type {{pascalCase name}}TabsScreenProps<Tab extends keyof {{pascalCase name}}TabsParamList> = CompositeScreenProps<
+  BottomTabScreenProps<{{pascalCase name}}TabsParamList, Tab>,
+  RootStackScreenProps<keyof RootStackParamList>
+>;
+
+export type {{pascalCase name}}ScreenProps = {{pascalCase name}}TabsScreenProps<'{{titleCase name}}'>;

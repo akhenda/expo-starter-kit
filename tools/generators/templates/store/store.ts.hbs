@@ -1,0 +1,42 @@
+import { createStore } from '@udecode/zustood';
+import { createJSONStorage } from 'zustand/middleware';
+
+import Config from '@src/config';
+import { zustandMMKVStorage } from '@src/services/storage/mmkv';
+
+const {{constantCase name}}_STATE_STORAGE_KEY = '@{{pascalCase name}}State';
+
+export type {{pascalCase name}}State = {
+  foo: string;
+  really: boolean;
+};
+
+const initial{{pascalCase name}}State = {
+  foo: 'bar',
+  really: false,
+} satisfies {{pascalCase name}}State;
+
+export const {{camelCase name}}Store = createStore('{{camelCase name}}')<{{pascalCase name}}State>(initial{{pascalCase name}}State, {
+  devtools: {
+    enabled: Config.USE_ZUSTAND_DEV_TOOLS,
+  },
+  persist: {
+    enabled: true,
+    name: {{constantCase name}}_STATE_STORAGE_KEY,
+    storage: createJSONStorage(() => zustandMMKVStorage),
+  },
+})
+  .extendSelectors((_, get) => ({
+    isBaz: () => get.foo() === 'bar',
+  }))
+  .extendActions((set, get) => ({
+    toggleReally: () => set.really(!get.really()),
+  }))
+  .extendActions((set) => ({
+    reset: () => {
+      const { foo, really } = initial{{pascalCase name}}State;
+
+      set.foo(foo);
+      set.really(really);
+    },
+  }));

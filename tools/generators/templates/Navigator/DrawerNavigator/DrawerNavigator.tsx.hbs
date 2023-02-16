@@ -1,0 +1,16 @@
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import type { {{pascalCase name}}DrawerParamList } from './{{pascalCase name}}Navigator.types';
+
+const Drawer = createDrawerNavigator<{{pascalCase name}}DrawerParamList>();
+
+const {{pascalCase name}}Navigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="{{titleCase name}}" component={React.Fragment} />
+    </Drawer.Navigator>
+  );
+}
+
+export default {{pascalCase name}}Navigator;

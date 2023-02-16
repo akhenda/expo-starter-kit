@@ -20,7 +20,6 @@ module.exports = {
           '@assets': './src/constants/assets',
           '@colors': './src/constants/colors',
           '@components': './src/components',
-          '@constants': './src/constants',
           '@screens': './src/screens',
           '@utils': './src/utils',
           '@navigation': './src/navigation',
@@ -35,25 +34,5 @@ module.exports = {
       },
     },
   },
-  rules: {
-    'no-use-before-define': ['off', { functions: false, classes: false }],
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'import/prefer-default-export': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'react/style-prop-object': [
-      'error',
-      {
-        allow: ['StatusBar'],
-      },
-    ],
-
-    'react/function-component-definition': [
-      'error',
-      {
-        namedComponents: ['function-declaration', 'arrow-function'],
-        unnamedComponents: 'arrow-function',
-      },
-    ],
-  },
+  rules: {},
 };

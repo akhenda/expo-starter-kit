@@ -1,0 +1,10 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react-native';
+import { action } from '@storybook/addon-actions';
+
+import {{pascalCase name}} from './{{pascalCase name}}';
+
+declare let module: any
+
+storiesOf('{{pascalCase name}}', module)
+  .add('default', () => <{{pascalCase name}} onClick={action('onClick')} />);

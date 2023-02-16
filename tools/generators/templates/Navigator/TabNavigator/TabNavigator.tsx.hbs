@@ -1,0 +1,16 @@
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import type { {{pascalCase name}}TabsParamList } from './{{pascalCase name}}Navigator.types';
+
+const Tab = createBottomTabNavigator<{{pascalCase name}}TabsParamList>();
+
+const {{pascalCase name}}Navigator = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="{{titleCase name}}" component={React.Fragment} />
+    </Tab.Navigator>
+  );
+}
+
+export default {{pascalCase name}}Navigator;

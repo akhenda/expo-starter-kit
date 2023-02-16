@@ -1,0 +1,16 @@
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import type { {{pascalCase name}}StackParamList } from './{{pascalCase name}}Navigator.types';
+
+const Stack = createStackNavigator<{{pascalCase name}}StackParamList>();
+
+const {{pascalCase name}}Navigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="{{titleCase name}}" component={React.Fragment} />
+    </Stack.Navigator>
+  );
+}
+
+export default {{pascalCase name}}Navigator;
