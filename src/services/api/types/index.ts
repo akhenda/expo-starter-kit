@@ -3,5 +3,6 @@
  * API endpoint, assuming it's a JSON object like we have.
  */
 
-export * from '@services/api/episodes/types';
-export * from '@services/api/feed/types';
+export * from '@src/services/api/movies/types';
+export * from '@src/services/api/search/types';
+export * from '@src/services/api/series/types';

@@ -3,8 +3,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
-import { setupReactotron } from '@src/config/libs/reactotron';
 import { useNavigationPersistence } from '@src/navigation/utils';
+import { setupReactotron } from '@src/services/reactotron';
 import { customFontsToLoad } from '@src/theme/typography';
 
 import useTheme from './useTheme';

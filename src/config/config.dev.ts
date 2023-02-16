@@ -23,6 +23,7 @@ if (__DEV__) {
  * https://reactnative.dev/docs/security#storing-sensitive-info
  */
 export default {
-  API_URL: 'https://api.themoviedb.org/3/',
+  API_KEY: process.env.API_KEY,
+  API_URL: 'https://www.omdbapi.com/',
   USE_ZUSTAND_DEV_TOOLS: false,
-};
+} as const;

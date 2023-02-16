@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 
-import '@src/config';
+import '@src/config/init';
 
 import Main from './src';
 

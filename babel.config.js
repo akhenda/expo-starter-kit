@@ -31,7 +31,7 @@ const getPlugins = () => {
         keySeparator: null,
         locales: ['en'],
         nsSeparator: null,
-        outputPath: 'src/config/libs/i18n/locales/en.json',
+        outputPath: 'src/services/i18n/locales/en.json',
       },
     ],
   ];

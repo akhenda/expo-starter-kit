@@ -1,4 +1,6 @@
+export * from './useAPI';
 export { default as useColorScheme } from './useColorScheme';
+export * from './useFirebase';
 export * from './useLifecycle';
 export * from './useNavigationUtils';
 export { default as useOnAppStart } from './useOnAppStart';

@@ -2,14 +2,17 @@
  * This Api class lets you define an API endpoint and methods to request
  * data and process it.
  */
+import perf, { FirebasePerformanceTypes } from '@react-native-firebase/perf';
 import { ApisauceInstance, create, Monitor } from 'apisauce';
+import type { AxiosRequestConfig } from 'axios';
 import { CamelcaseSerializer, SnakecaseSerializer } from 'cerealizr';
 
 import Config from '@src/config';
-import { Reactotron } from '@src/config/libs/reactotron/client';
+import { Reactotron } from '@src/services/reactotron/client';
 
 import type { ApiConfig } from './types/config';
-import { EpisodesApi } from './episodes';
+import { MoviesApi } from './movies';
+import { SeriesApi } from './series';
 
 const snakecaseSerializer = new SnakecaseSerializer();
 const camelcaseSerializer = new CamelcaseSerializer();
@@ -31,7 +34,9 @@ export class Api {
 
   private config: ApiConfig;
 
-  episodes: EpisodesApi;
+  movies: MoviesApi;
+
+  series: SeriesApi;
 
   /**
    * Set up our API instance. Keep this lightweight!
@@ -49,11 +54,14 @@ export class Api {
     });
 
     if (__DEV__) this.addMonitors();
+    this.injectAPIKey();
     this.setAuthorizationHeader();
     this.addRequestTransforms();
     this.addResponseTransforms();
+    this.addFirebasePerformanceMonitoring();
 
-    this.episodes = new EpisodesApi(this.apisauce);
+    this.movies = new MoviesApi(this.apisauce);
+    this.series = new SeriesApi(this.apisauce);
   }
 
   /**
@@ -83,6 +91,16 @@ export class Api {
     });
   }
 
+  private injectAPIKey() {
+    // this.apisauce.axiosInstance.defaults.params = {};
+    this.apisauce.axiosInstance.interceptors.request.use((config) => {
+      // eslint-disable-next-line no-param-reassign
+      config.params.apikey = Config.API_KEY;
+
+      return config;
+    });
+  }
+
   private setAuthorizationHeader() {
     this.apisauce.setHeader('Authorization', 'Bearer token');
   }
@@ -102,6 +120,71 @@ export class Api {
         throw { data: response.data, problem: response.problem, status: response.status } as unknown as Error;
       }
     });
+  }
+
+  private addFirebasePerformanceMonitoring() {
+    this.apisauce.axiosInstance.interceptors.request.use(
+      async (config: AxiosRequestConfig & { metadata?: { httpMetric: FirebasePerformanceTypes.HttpMetric } }) => {
+        try {
+          const httpMetric = perf().newHttpMetric(
+            config.url || '',
+            config.method as FirebasePerformanceTypes.HttpMethod,
+          );
+
+          // eslint-disable-next-line no-param-reassign
+          config.metadata = { httpMetric };
+
+          // add any extra metric attributes, if required
+          // httpMetric.putAttribute('userId', '12345678');
+
+          await httpMetric.start();
+        } catch {
+          // catch error
+        }
+
+        return config;
+      },
+    );
+
+    this.apisauce.axiosInstance.interceptors.response.use(
+      async (response) => {
+        try {
+          // Request was successful, e.g. HTTP code 200
+          const { httpMetric } = (
+            response.config as AxiosRequestConfig & { metadata: { httpMetric: FirebasePerformanceTypes.HttpMetric } }
+          ).metadata;
+
+          // add any extra metric attributes if needed
+          // httpMetric.putAttribute('userId', '12345678');
+
+          httpMetric.setHttpResponseCode(response.status);
+          httpMetric.setResponseContentType(response.headers['content-type']);
+          await httpMetric.stop();
+        } catch {
+          // catch error
+        }
+
+        return response;
+      },
+      async (error) => {
+        try {
+          // Request failed, e.g. HTTP code 500
+          const { httpMetric } = error.config.metadata;
+
+          // add any extra metric attributes if needed
+          // httpMetric.putAttribute('userId', '12345678');
+
+          httpMetric.setHttpResponseCode(error.response.status);
+          httpMetric.setResponseContentType(error.response.headers['content-type']);
+          await httpMetric.stop();
+        } catch {
+          // catch error
+        }
+
+        // Ensure failed requests throw after interception
+        return Promise.reject(error);
+      },
+    );
   }
 }
 
