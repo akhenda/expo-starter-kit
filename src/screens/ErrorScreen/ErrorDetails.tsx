@@ -1,4 +1,4 @@
-import React, { ErrorInfo } from 'react';
+import type { ErrorInfo } from 'react';
 import { Pressable, ScrollView, TextStyle, ViewStyle } from 'react-native';
 
 import { Text, View } from '@components/Themed';

@@ -12,9 +12,9 @@
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
+import useOnAppStart from './hooks/useOnAppStart';
 import { ErrorBoundary } from './screens/ErrorScreen/ErrorBoundary';
 import Config from './config';
-import { useOnAppStart } from './hooks';
 import Navigation from './navigation';
 
 export default function Main() {

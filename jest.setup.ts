@@ -10,6 +10,8 @@
  * @see module:jestConfig
  */
 
+import mockRNCNetInfo from '@react-native-community/netinfo/jest/netinfo-mock';
+
 // include this line for mocking react-native-gesture-handler
 import 'react-native-gesture-handler/jestSetup';
 
@@ -48,3 +50,6 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 );
 
 jest.mock('react-native-mmkv-flipper-plugin');
+jest.mock('zustand');
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
+jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);

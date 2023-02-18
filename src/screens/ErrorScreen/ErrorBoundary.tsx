@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import type { Theme } from '@react-navigation/native';
 import isEqual from 'lodash/isEqual';
 

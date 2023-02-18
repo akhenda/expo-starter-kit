@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { connectToDevTools } from 'react-devtools-core';
-
 import storage from '@src/services/storage/mmkv';
 
 if (__DEV__) {
@@ -8,11 +5,6 @@ if (__DEV__) {
   const { initializeMMKVFlipper } = require('react-native-mmkv-flipper-plugin');
 
   initializeMMKVFlipper({ default: storage });
-
-  connectToDevTools({
-    host: 'localhost',
-    port: 8097,
-  });
 }
 
 /**

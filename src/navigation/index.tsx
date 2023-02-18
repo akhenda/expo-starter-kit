@@ -3,7 +3,6 @@
  * https://reactnavigation.org/docs/getting-started
  * https://www.jakallergis.com/proper-react-navigation-v-5-with-type-script
  */
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { RootNavigator } from './navigators/RootNavigator';
