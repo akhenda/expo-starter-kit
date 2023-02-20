@@ -12,14 +12,14 @@ jobs:
         uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.4
         name: Install PNPM Packager
+      - name: Install Deps & Run Tests
+        run: pnpm install --frozen-lockfile && pnpm run test:ci
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
           tsc: true
           eslint: true
           prettier: true
-      - name: Install Deps & Run Tests
-        run: pnpm install --frozen-lockfile && pnpm run test:ci
       - name: Generating coverage badges
         uses: jpb06/jest-badges-action@latest
         with:
