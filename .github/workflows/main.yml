@@ -1,0 +1,33 @@
+name: Test, Release & Publish on merge
+'on':
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install PNPM Packager
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          tsc: true
+          eslint: true
+          prettier: true
+      - name: Install Deps & Run Tests
+        run: pnpm install --frozen-lockfile && pnpm run test:ci
+      - name: Generating coverage badges
+        uses: jpb06/jest-badges-action@latest
+        with:
+          branches: main,dev
+          commit-message: 'chore: update coverage badges [skip ci]'
+          output-folder: ./__badges__
+      # - name: Semantic Release
+      #   uses: cycjimmy/semantic-release-action@v3
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

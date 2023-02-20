@@ -2,6 +2,11 @@
   "name": "expo-starter",
   "version": "1.0.0",
   "private": true,
+  "volta": {
+    "node": "16.19.1",
+    "pnpm": "7.27.1"
+  },
+  "packageManager": "pnpm@7.27.1",
   "scripts": {
     "gc": "git add . && git-cz",
     "prepare": "chmod +x ./node_modules/husky/lib/bin.js && husky install",
