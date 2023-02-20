@@ -12,3 +12,4 @@ coverage
 /ios/**/*
 
 tools/generators/templates
+.github

@@ -1,8 +1,12 @@
-import type { ImageStyle, TextStyle } from 'react-native';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 
 import { EmptyState } from '@src/components';
 import { View } from '@src/components/Themed';
 import { images } from '@src/theme';
+
+const containerStyles: ViewStyle = {
+  flex: 1,
+};
 
 const imageStyle: ImageStyle = {
   marginBottom: 20,
@@ -17,7 +21,7 @@ const textStyles: TextStyle = {
 
 const NotAuthorized = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={containerStyles}>
       <EmptyState
         imageSource={images.empty.notAllowed}
         imageStyle={imageStyle}
