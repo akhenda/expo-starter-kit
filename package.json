@@ -29,6 +29,7 @@
     "prettify:json": "prettier --write '**/*.json'",
     "prettify:md": "prettier --write '**/*.md'",
     "prettify:ts": "prettier --write '**/*.ts{,x}'",
+    "prettify:yaml": "prettier --write '**/*.y{,a}ml'",
     "prettify": "npm-run-all prettify:*",
     "build:dev": "eas build --profile development",
     "build:dev-client": "eas build --profile dev-client",
