@@ -4,7 +4,8 @@ import { SharedElement } from 'react-navigation-shared-element';
 import LottieView from 'lottie-react-native';
 
 import { View } from '@components/Themed';
-import { useColorScheme, useToggle } from '@src/hooks';
+import useColorScheme from '@src/hooks/useColorScheme';
+import { useToggle } from '@src/hooks/useHooksTs';
 import type { SplashStackScreenProps } from '@src/navigation/navigators/SplashNavigator/SplashNavigator.props';
 import { images, lottie } from '@src/theme';
 import { delay } from '@src/utils/common';

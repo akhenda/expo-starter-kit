@@ -9,6 +9,7 @@ export type RootStackParamList = {
   'App Stack': NavigatorScreenParams<AppStackParamList>;
   'You are Offline': undefined;
   Modal: undefined;
+  'Not Found': undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = StackScreenProps<

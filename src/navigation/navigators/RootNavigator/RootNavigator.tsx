@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useNavigation } from '@react-navigation/native';
@@ -28,6 +28,7 @@ const RootNavigator = () => {
     <Navigator initialRouteName="Splash Stack" screenOptions={{ headerShown: false }}>
       <Screen name="Splash Stack" component={SplashNavigator} />
       <Screen name="App Stack" component={AppNavigator} />
+      <Screen name="Not Found" component={Fragment} options={{ presentation: 'modal' }} />
       <Screen name="Modal" component={ModalScreen} options={{ presentation: 'modal' }} />
       <Screen
         name="You are Offline"
