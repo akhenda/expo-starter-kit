@@ -33,6 +33,12 @@ const screenGenerator = {
         type: 'add',
       },
       {
+        path: path('.spec.tsx'),
+        templateFile: 'tools/generators/templates/Screen/Screen.spec.tsx.hbs',
+        transform: prettierTransform,
+        type: 'add',
+      },
+      {
         path: path('.ts', 'index'),
         templateFile: 'tools/generators/templates/Screen/index.ts.hbs',
         transform: prettierTransform,

@@ -1,3 +1,15 @@
-describe('{{camelCase name}} util', () => {
-  // TODO: add tests
+import { {{camelCase name}} } from '../{{camelCase name}}';
+
+describe('{{camelCase name}} helper function', () => {
+  it('should return full GMT+3 date format', () => {
+    const date = {{camelCase name}}();
+
+    expect(date).toInclude('GMT+3');
+  });
+
+  it('should return 23rd Feb, 2019 in full GMT+3 date format', () => {
+    const date = {{camelCase name}}(new Date(Date.UTC(2019, 1, 23, 8)));
+
+    expect(date).toBe('Saturday, 23 February 2019 at 11:00:00 GMT+3');
+  });
 });

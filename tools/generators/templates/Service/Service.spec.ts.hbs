@@ -1,3 +1,13 @@
+import {{camelCase name}}, { {{pascalCase name}}Service } from './{{pascalCase name}}';
+
 describe('{{pascalCase name}} service', () => {
-  // TODO: add tests
+  it('should say hello world', () => {
+    expect({{camelCase name}}.greet()).toBe('Hello, World!');
+  });
+
+  it('allows a different greeting', () => {
+    const howdy = new {{pascalCase name}}Service('Howdy', 'Folks');
+
+    expect(howdy.greet()).toBe('Howdy, Folks!');
+  });
 });

@@ -10,10 +10,12 @@
  * if you're interested in adding screens and navigators.
  */
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
+import { FuegoProvider } from '@nandorojo/swr-firestore';
 import { StatusBar } from 'expo-status-bar';
 
 import useOnAppStart from './hooks/useOnAppStart';
 import { ErrorBoundary } from './screens/ErrorScreen/ErrorBoundary';
+import { fuego } from './services/firebase/config';
 import Config from './config';
 import Navigation from './navigation';
 
@@ -34,7 +36,9 @@ export default function Main() {
     <SafeAreaProvider initialMetrics={initialWindowMetrics} onLayout={onLayoutRootView}>
       <ErrorBoundary catchErrors={Config.catchErrors} navTheme={navTheme}>
         <StatusBar style={statusBarStyle} backgroundColor={statusBarBGColor} />
-        <Navigation initialState={initialNavigationState} onStateChange={onNavigationStateChange} theme={navTheme} />
+        <FuegoProvider fuego={fuego}>
+          <Navigation initialState={initialNavigationState} onStateChange={onNavigationStateChange} theme={navTheme} />
+        </FuegoProvider>
       </ErrorBoundary>
     </SafeAreaProvider>
   );

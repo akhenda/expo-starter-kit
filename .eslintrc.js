@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ['@react-native-community', 'heimdall/native', 'heimdall/tests'],
+  extends: ['@react-native-community', 'heimdall/native', 'heimdall/tests', 'plugin:testing-library/react'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',

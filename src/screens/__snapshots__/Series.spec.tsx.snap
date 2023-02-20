@@ -1,0 +1,739 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    [
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [
+        {
+          "position": "relative",
+        },
+        undefined,
+        [
+          {
+            "paddingBottom": 0,
+          },
+        ],
+      ],
+    ]
+  }
+>
+  <RCTScrollView>
+    <View>
+      <View
+        padding-15={true}
+        style={
+          [
+            undefined,
+            undefined,
+            {
+              "flex": 1,
+            },
+            undefined,
+            {
+              "padding": 15,
+            },
+            {},
+            {},
+            undefined,
+          ]
+        }
+      >
+        <Text
+          h1={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 206,
+                "fontWeight": "300",
+                "lineHeight": 240.40200000000002,
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          text={true}
+        >
+          H1 
+          Series
+        </Text>
+        <Text
+          h2={true}
+          secondary={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 129,
+                "fontWeight": "300",
+                "lineHeight": 154.79999999999998,
+              },
+              {
+                "color": "#57B21A",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          H2 
+          Series
+        </Text>
+        <Text
+          h3={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 103,
+                "fontWeight": "400",
+                "lineHeight": 120.20100000000001,
+              },
+              {
+                "color": "#57B21A",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          success={true}
+        >
+          H3 
+          Series
+        </Text>
+        <Text
+          h4={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 73,
+                "fontWeight": "400",
+                "lineHeight": 90.155,
+              },
+              {
+                "color": "#fcc100",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          warning={true}
+        >
+          H4 
+          Series
+        </Text>
+        <Text
+          h5={true}
+          info={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 52,
+                "fontWeight": "400",
+                "lineHeight": 69.36800000000001,
+              },
+              {
+                "color": "#2663ff",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          H5 
+          Series
+        </Text>
+        <Text
+          error={true}
+          h6={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "codaRegular",
+                "fontSize": 43,
+                "fontWeight": "500",
+                "lineHeight": 68.8,
+              },
+              {
+                "color": "#db4518",
+              },
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          H6 
+          Series
+        </Text>
+        <Text
+          caption={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 26,
+                "fontWeight": "400",
+                "lineHeight": 43.16,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          Caption
+        </Text>
+        <Text
+          overline={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 26,
+                "fontWeight": "400",
+                "lineHeight": 69.16,
+                "textTransform": "uppercase",
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          Overline
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 35,
+                "fontWeight": "400",
+                "lineHeight": 61.25,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          subtitle={true}
+        >
+          Subtitle
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 30,
+                "fontWeight": "500",
+                "lineHeight": 47.1,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          subtitle2={true}
+        >
+          Subtitle 2
+        </Text>
+        <Text
+          body={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 35,
+                "fontWeight": "400",
+                "lineHeight": 52.5,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          Body
+        </Text>
+        <Text
+          body2={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 30,
+                "fontWeight": "400",
+                "lineHeight": 42.9,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          testID="email"
+        >
+          john@doe.me
+        </Text>
+        <Text
+          p={true}
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "color": "#20303C",
+                "textAlign": "left",
+              },
+              {
+                "color": "rgba(0, 0, 0, 0.87)",
+                "fontFamily": "ubuntuRegular",
+                "fontSize": 35,
+                "fontWeight": "400",
+                "lineHeight": 52.5,
+              },
+              undefined,
+              undefined,
+              undefined,
+              {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ]
+          }
+          testID="theme"
+        >
+          light
+        </Text>
+        <View
+          collapsable={false}
+          style={
+            [
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              [
+                {},
+                undefined,
+              ],
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                [
+                  {
+                    "borderBottomWidth": 1,
+                    "borderColor": "#F0F2F5",
+                    "flexDirection": "row",
+                    "justifyContent": undefined,
+                    "paddingBottom": 10,
+                  },
+                  undefined,
+                  {
+                    "borderColor": "#D2D6D8",
+                  },
+                  {
+                    "paddingTop": undefined,
+                  },
+                ],
+              ]
+            }
+          >
+            <TextInput
+              accessibilityLabel=". Mandatory"
+              editable={true}
+              enableErrors={true}
+              maxLength={30}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              onKeyPress={[Function]}
+              placeholder="Placeholder"
+              placeholderTextColor="#6E7881"
+              showCharCounter={true}
+              style={
+                [
+                  undefined,
+                  {
+                    "backgroundColor": "transparent",
+                    "borderColor": "transparent",
+                    "borderWidth": undefined,
+                    "flexGrow": 1,
+                    "padding": 0,
+                    "textAlign": "left",
+                  },
+                  {
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "fontWeight": "400",
+                  },
+                  undefined,
+                  false,
+                  undefined,
+                  {
+                    "color": "#20303C",
+                  },
+                  undefined,
+                ]
+              }
+              underlineColorAndroid="transparent"
+              validate={
+                [
+                  "required",
+                  "email",
+                  [Function],
+                ]
+              }
+              validateOnBlur={true}
+              validationMessage={
+                [
+                  "Field is required",
+                  "Email is invalid",
+                  "Password is too short",
+                ]
+              }
+              value="john@doe.me"
+            />
+          </View>
+          <View
+            row={true}
+            style={
+              [
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                {},
+                {},
+                {
+                  "flexDirection": "row",
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  undefined,
+                  undefined,
+                  {
+                    "flex": 1,
+                  },
+                  undefined,
+                  {},
+                  {},
+                  {},
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                accessible={false}
+                style={
+                  [
+                    {
+                      "backgroundColor": "transparent",
+                      "color": "#20303C",
+                      "textAlign": "left",
+                    },
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    [
+                      {
+                        "color": "#FC3D2F",
+                        "textAlign": "left",
+                      },
+                      {
+                        "fontFamily": "System",
+                        "fontSize": 14,
+                        "fontWeight": "400",
+                        "height": 20,
+                        "lineHeight": 20,
+                      },
+                      {
+                        "marginTop": 9,
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onLayout={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "alignSelf": "flex-end",
+              "backgroundColor": "#1C7AB0",
+              "borderRadius": 999,
+              "elevation": 2,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "marginTop": 15,
+              "minWidth": 90,
+              "opacity": 1,
+              "paddingHorizontal": 20,
+              "paddingVertical": 9.5,
+              "shadowColor": "#1C7AB0",
+              "shadowOffset": {
+                "height": 5,
+                "width": 0,
+              },
+              "shadowOpacity": 0.35,
+              "shadowRadius": 9.5,
+            }
+          }
+          testID="button"
+        >
+          <Text
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "color": "#20303C",
+                  "textAlign": "left",
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "flexDirection": "row",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "fontWeight": "400",
+                    "lineHeight": 24,
+                  },
+                  {
+                    "color": "#FFFFFF",
+                  },
+                  undefined,
+                  undefined,
+                  undefined,
+                ],
+              ]
+            }
+            testID="button.label"
+          >
+            Change Theme
+          </Text>
+          <Text
+            allowFontScaling={false}
+            selectable={false}
+            style={
+              [
+                {
+                  "color": "#D3E4FF",
+                  "fontSize": 24,
+                },
+                [
+                  {
+                    "marginLeft": undefined,
+                    "marginRight": undefined,
+                  },
+                  undefined,
+                ],
+                {
+                  "fontFamily": "ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

@@ -11,12 +11,13 @@ import type {
 } from '@navigation/navigators/RootNavigator/RootNavigator.props';
 
 export type {{pascalCase name}}DrawerParamList = {
-  '{{titleCase name}}': undefined;
+  'Screen One': undefined;
+  'Screen Two': { parent: string };
 };
 
 export type {{pascalCase name}}DrawerProps = DrawerContentComponentProps & {
-  navigation: DrawerNavigationProp<{{pascalCase name}}DrawerParamList, '{{titleCase name}}'>;
-  route: RouteProp<{{pascalCase name}}DrawerParamList, '{{titleCase name}}'>;
+  navigation: DrawerNavigationProp<{{pascalCase name}}DrawerParamList, 'Screen One'>;
+  route: RouteProp<{{pascalCase name}}DrawerParamList, 'Screen One'>;
 };
 
 export type {{pascalCase name}}DrawerScreenProps<Screen extends keyof {{pascalCase name}}DrawerParamList> = CompositeScreenProps<

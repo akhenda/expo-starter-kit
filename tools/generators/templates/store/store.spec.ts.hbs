@@ -1,3 +1,79 @@
-describe('{{camelCase name}} store', () => {
-  // TODO: add tests
+import { act, renderHook } from '@testing-library/react-native';
+
+import { {{camelCase name}}Store } from './{{camelCase name}}';
+
+const use{{pascalCase name}}Store = {{camelCase name}}Store.useStore;
+
+describe('{{pascalCase name}} store', () => {
+  it('has initial state', () => {
+    const { result } = renderHook(() => use{{pascalCase name}}Store());
+
+    expect(result.current.foo).toBe('bar');
+    expect(result.current.really).toBe(false);
+  });
+
+  it('updates the foo when updateFoo action is called', () => {
+    const { result } = renderHook(() => use{{pascalCase name}}Store());
+
+    act(() => {
+      {{camelCase name}}Store.set.updateFoo('baz');
+    });
+
+    expect(result.current.foo).toBe('baz');
+  });
+
+  it('really is toggled when toggleReally is fired', () => {
+    const { result } = renderHook(() => use{{pascalCase name}}Store());
+
+    expect(result.current.really).toBeFalse();
+
+    act(() => {
+      {{camelCase name}}Store.set.toggleReally();
+    });
+
+    expect(result.current.really).toBeTrue();
+
+    act(() => {
+      {{camelCase name}}Store.set.toggleReally();
+    });
+
+    expect(result.current.really).toBeFalse();
+  });
+
+  it('computed property isBaz works as expected', () => {
+    expect({{camelCase name}}Store.get.isBaz()).toBeFalse();
+
+    act(() => {
+      {{camelCase name}}Store.set.updateFoo('baz');
+    });
+
+    expect({{camelCase name}}Store.get.isBaz()).toBeTrue();
+
+    act(() => {
+      {{camelCase name}}Store.set.updateFoo('bar');
+    });
+
+    expect({{camelCase name}}Store.get.isBaz()).toBeFalse();
+  });
+
+  it('reset state works correctly', () => {
+    const { result } = renderHook(() => use{{pascalCase name}}Store());
+
+    act(() => {
+      {{camelCase name}}Store.set.toggleReally();
+      {{camelCase name}}Store.set.updateFoo('baz');
+    });
+
+    expect({{camelCase name}}Store.get.isBaz()).toBeTrue();
+    expect(result.current.really).toBeTrue();
+    expect(result.current.foo).toEqual('baz');
+
+    act(() => {
+      {{camelCase name}}Store.set.reset();
+    });
+
+    expect({{camelCase name}}Store.get.isBaz()).toBeFalse();
+    expect(result.current.really).toBeFalse();
+    expect(result.current.foo).toBe('bar');
+  });
 });

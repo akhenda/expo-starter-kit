@@ -11,7 +11,7 @@ const utilGenerator = {
       type: 'add',
     },
     {
-      path: 'src/utils/{{camelCase name}}.spec.ts',
+      path: 'src/utils/__tests__/{{camelCase name}}.spec.ts',
       templateFile: 'tools/generators/templates/util/util.spec.ts.hbs',
       transform: prettierTransform,
       type: 'add',

@@ -1,5 +1,31 @@
-class {{pascalCase name}}Service {}
+export class {{pascalCase name}}Service {
+  /**
+   * The protected modifier acts much like the private modifier
+   * with the exception that members declared protected can also
+   * be accessed within deriving classes.
+   *
+   * Also, when a base class variable is protected we cannot use
+   * its variable from derived class directly.
+   */
+  protected greeting: string;
+
+  /**
+   * When a member is marked private, it cannot be accessed from
+   * outside of its containing class.
+   */
+  private name: string;
+
+  constructor(greeting = 'Hello', name = 'World') {
+    this.greeting = greeting;
+    this.name = name;
+  }
+
+  greet() {
+    return `${this.greeting}, ${this.name}!`;
+  }
+}
 
 const {{camelCase name}}Service = new {{pascalCase name}}Service();
 
 export default {{camelCase name}}Service;
+

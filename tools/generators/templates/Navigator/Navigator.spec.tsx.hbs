@@ -1,0 +1,62 @@
+/**
+ * Reference:
+ * @see https://callstack.github.io/react-native-testing-library/docs/react-navigation
+ */
+
+import { NavigationContainer } from '@react-navigation/native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+
+import {{pascalCase name}}Navigator from './{{pascalCase name}}Navigator';
+
+describe('{{pascalCase name}}Navigator', () => {
+  test('has screen one as the initial screen', async () => {
+    const component = (
+      <NavigationContainer>
+        <{{pascalCase name}}Navigator />
+      </NavigationContainer>
+    );
+
+    render(component);
+
+    const header = await screen.findByRole('header');
+    const screenTitle = screen.getByText(/Screen 1/);
+
+    expect(header).toBeOnTheScreen();
+    expect(header).toHaveTextContent('Screen One');
+    expect(screenTitle).toBeVisible();
+  });
+
+  test('clicking on the next button takes you to screen two', async () => {
+    const component = (
+      <NavigationContainer>
+        <{{pascalCase name}}Navigator />
+      </NavigationContainer>
+    );
+
+    render(component);
+
+    const toClick = await screen.findByText('Next');
+
+    fireEvent(toClick, 'press');
+
+    const [, screenTwoHeader] = await screen.findAllByRole('header');
+    const screenTwoTitle = await screen.findByText('Screen 2');
+    const screenTwoSubtitle = await screen.findByText(/screen ya kwanza/i);
+
+    expect(screenTwoHeader).toBeOnTheScreen();
+    expect(screenTwoHeader).toHaveTextContent('Screen Two');
+    expect(screenTwoTitle).toBeOnTheScreen();
+    expect(screenTwoSubtitle).toBeOnTheScreen();
+
+    const toClickAgain = await screen.findByText('Back');
+
+    fireEvent(toClickAgain, 'press');
+
+    const [screenOneHeader] = await screen.findAllByRole('header');
+    const screenOneTitle = await screen.findByText('Screen 1');
+
+    expect(screenOneHeader).toBeOnTheScreen();
+    expect(screenOneHeader).toHaveTextContent('Screen One');
+    expect(screenOneTitle).toBeOnTheScreen();
+  });
+});

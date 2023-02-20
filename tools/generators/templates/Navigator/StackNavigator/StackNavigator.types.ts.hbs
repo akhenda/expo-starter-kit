@@ -10,7 +10,8 @@ import type {
 } from '@navigation/navigators/RootNavigator/RootNavigator.props';
 
 export type {{pascalCase name}}StackParamList = {
-  '{{titleCase name}}': undefined;
+  'Screen One': undefined;
+  'Screen Two': { parent: string };
 };
 
 export type {{pascalCase name}}StackScreenProps<Screen extends keyof {{pascalCase name}}StackParamList> = CompositeScreenProps<

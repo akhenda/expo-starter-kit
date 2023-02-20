@@ -1,14 +1,32 @@
-import React from 'react';
+import Button from 'react-native-ui-lib/button';
+import Text from 'react-native-ui-lib/text';
+import View from 'react-native-ui-lib/view';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import type { {{pascalCase name}}TabsParamList } from './{{pascalCase name}}Navigator.types';
+import type { {{pascalCase name}}TabsParamList, {{pascalCase name}}TabsScreenProps } from './{{pascalCase name}}Navigator.types';
 
 const Tab = createBottomTabNavigator<{{pascalCase name}}TabsParamList>();
+
+const Screen1 = ({ navigation }: {{pascalCase name}}TabsScreenProps<'Screen One'>) => (
+  <View>
+    <Text>Screen 1</Text>
+    <Button label="Next" onPress={() => navigation.navigate('Screen Two', { parent: 'Screen Ya Kwanza' })} />
+  </View>
+);
+
+const Screen2 = ({ navigation, route }: {{pascalCase name}}TabsScreenProps<'Screen Two'>) => (
+  <View>
+    <Text>Screen 2</Text>
+    <Text>{route.params.parent}</Text>
+    <Button label="Back" onPress={() => navigation.goBack()} />
+  </View>
+);
 
 const {{pascalCase name}}Navigator = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="{{titleCase name}}" component={React.Fragment} />
+      <Tab.Screen name="Screen One" component={Screen1} />
+      <Tab.Screen name="Screen Two" component={Screen2} />
     </Tab.Navigator>
   );
 }

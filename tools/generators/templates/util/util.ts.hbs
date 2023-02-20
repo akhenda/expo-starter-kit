@@ -1,3 +1,7 @@
-export function {{camelCase name}}() {
-  // helper function here
+export function {{camelCase name}}(date = new Date()) {
+  return new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+    timeZone: 'Africa/Nairobi',
+  }).format(date);
 }

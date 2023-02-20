@@ -33,6 +33,12 @@ const componentGenerator = {
         transform: prettierTransform,
         type: 'add',
       },
+      {
+        path: path('.spec.tsx'),
+        templateFile: 'tools/generators/templates/Component/Component.spec.tsx.hbs',
+        transform: prettierTransform,
+        type: 'add',
+      },
 
       {
         path: path('.ts', 'index'),

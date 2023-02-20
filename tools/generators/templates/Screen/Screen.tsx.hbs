@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { Button, Text, View } from 'react-native-ui-lib';
-import { useNavigation } from '@react-navigation/native';
+import Button from 'react-native-ui-lib/Button';
+import Text from 'react-native-ui-lib/Text';
+import TextField from 'react-native-ui-lib/TextField';
+import View from 'react-native-ui-lib/View';
 import isEqual from 'lodash/isEqual';
 
 import { SafeAreaView, SaveAreaInset } from '@src/components';
@@ -21,8 +23,8 @@ const labelButton = { label: 'Change Theme' };
 const iconButton = { round: true };
 
 const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props) => {
-  const navigation = useNavigation();
   const theme = useTrackedStore().app.theme();
+  const [email, setEmail] = useState('');
   const [buttonProps, setButtonProps] = useState<ButtonProps>(labelButton);
 
   const onChangeTheme = () => {
@@ -31,7 +33,7 @@ const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props) => {
 
     actions.app.changeTheme(theme === 'dark' ? 'light' : 'dark');
 
-    logger.info(`Changing theme in ${navigation.getId()}`);
+    logger.info('Changing theme in {{pascalCase name}}');
   };
 
   const text = '{{pascalCase name}}';
@@ -63,9 +65,23 @@ const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props) => {
           <Text subtitle>Subtitle</Text>
           <Text subtitle2>Subtitle 2</Text>
           <Text body>Body</Text>
-          <Text body2>Body 2</Text>
-          <Text p>Series Heading</Text>
+          <Text testID="email" body2>
+            {email}
+          </Text>
+          <Text testID="theme" p>
+            {theme}
+          </Text>
+          <TextField
+            placeholder="Placeholder"
+            onChangeText={setEmail}
+            enableErrors
+            validate={['required', 'email', (value: string) => value.length > 6]}
+            validationMessage={['Field is required', 'Email is invalid', 'Password is too short']}
+            showCharCounter
+            maxLength={30}
+          />
           <Button
+            testID="button"
             onPress={onChangeTheme}
             marginT-15
             bg-primary
@@ -80,6 +96,6 @@ const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props) => {
       </ScrollView>
     </SafeAreaView>
   );
-}
+};
 
 export default {{pascalCase name}};

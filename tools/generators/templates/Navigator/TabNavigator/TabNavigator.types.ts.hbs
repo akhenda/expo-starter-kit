@@ -10,7 +10,8 @@ import type {
 } from '@navigation/navigators/RootNavigator/RootNavigator.props';
 
 export type {{pascalCase name}}TabsParamList = {
-  '{{titleCase name}}': undefined;
+  'Screen One': undefined;
+  'Screen Two': { parent: string };
 };
 
 export type {{pascalCase name}}TabsScreenProps<Tab extends keyof {{pascalCase name}}TabsParamList> = CompositeScreenProps<
@@ -18,4 +19,4 @@ export type {{pascalCase name}}TabsScreenProps<Tab extends keyof {{pascalCase na
   RootStackScreenProps<keyof RootStackParamList>
 >;
 
-export type {{pascalCase name}}ScreenProps = {{pascalCase name}}TabsScreenProps<'{{titleCase name}}'>;
+export type {{pascalCase name}}ScreenProps = {{pascalCase name}}TabsScreenProps<'Screen One'>;

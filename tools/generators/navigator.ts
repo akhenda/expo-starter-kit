@@ -24,8 +24,14 @@ const navigatorGenerator = {
         type: 'add',
       },
       {
+        path: 'src/navigation/navigators/{{pascalCase name}}Navigator/{{pascalCase name}}Navigator.spec.tsx',
+        templateFile: `tools/generators/templates/Navigator/Navigator.spec.tsx.hbs`,
+        transform: prettierTransform,
+        type: 'add',
+      },
+      {
         path: 'src/navigation/navigators/{{pascalCase name}}Navigator/index.ts',
-        templateFile: `tools/generators/templates/Navigator/${data.type}Navigator/index.ts.hbs`,
+        templateFile: `tools/generators/templates/Navigator/index.ts.hbs`,
         transform: prettierTransform,
         type: 'add',
       },

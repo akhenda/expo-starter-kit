@@ -27,10 +27,11 @@ export const {{camelCase name}}Store = createStore('{{camelCase name}}')<{{pasca
   },
 })
   .extendSelectors((_, get) => ({
-    isBaz: () => get.foo() === 'bar',
+    isBaz: () => get.foo() === 'baz',
   }))
   .extendActions((set, get) => ({
     toggleReally: () => set.really(!get.really()),
+    updateFoo: (payload: 'bar' | 'baz') => set.foo(payload),
   }))
   .extendActions((set) => ({
     reset: () => {

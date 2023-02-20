@@ -35,10 +35,14 @@ const config = {
     '!**/.eslintrc.js',
     '!**/.prettierrc.js',
   ],
-  setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
+  setupFilesAfterEnv: [
+    'jest-extended/all',
+    '@testing-library/jest-native/extend-expect',
+    join(__dirname, 'jest.setup.ts'),
+  ],
 
   /** @see module:jestSetup */
-  setupFiles: [join(__dirname, 'jest.setup.ts')],
+  // setupFiles: [join(__dirname, 'jest.setup.ts')],
 
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   coverageReporters: ['json-summary', 'text', 'lcov', 'json', 'html', 'text-summary'],
@@ -56,6 +60,11 @@ const config = {
       },
     },
   },
+  moduleDirectories: [
+    'node_modules',
+    'src/utils/tests', // a utility folder
+    __dirname, // the root directory
+  ],
 };
 
 module.exports = config;

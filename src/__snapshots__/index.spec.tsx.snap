@@ -1,16 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Main /> renders correctly 1`] = `
-<RNCSafeAreaProvider
-  onInsetsChange={[Function]}
-  onLayout={[MockFunction]}
-  style={
-    [
-      {
-        "flex": 1,
-      },
-      undefined,
-    ]
-  }
+exports[`renders correctly 1`] = `
+<View
+  fuego={{}}
 />
 `;

@@ -1,3 +1,4 @@
+/* eslint-disable lodash/prefer-noop */
 /* eslint-disable global-require */
 /**
  * Additional setup code that should run before Jest starts.
@@ -10,6 +11,8 @@
  * @see module:jestConfig
  */
 
+import { AccessibilityInfo, NativeModules } from 'react-native';
+import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 import mockRNCNetInfo from '@react-native-community/netinfo/jest/netinfo-mock';
 
 // include this line for mocking react-native-gesture-handler
@@ -36,7 +39,6 @@ jest.mock('react-native-reanimated', () => {
 
   // The mock for `call` immediately calls the callback which is incorrect
   // So we override it with a no-op
-  // eslint-disable-next-line lodash/prefer-noop
   Reanimated.default.call = () => {};
 
   return Reanimated;
@@ -53,3 +55,16 @@ jest.mock('react-native-mmkv-flipper-plugin');
 jest.mock('zustand');
 jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
 jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
+
+// RNUILIb Mocks
+// https://github.com/wix/react-native-ui-lib/blob/master/jest-setup.js
+jest.mock('@react-native-community/blur', () => {});
+NativeModules.StatusBarManager = { getHeight: jest.fn() };
+jest.spyOn(AccessibilityInfo, 'isScreenReaderEnabled').mockImplementation(() => Promise.resolve(false));
+jest.mock('react-native', () => {
+  const reactNative = jest.requireActual('react-native');
+  reactNative.NativeModules.KeyboardTrackingViewTempManager = {};
+  return reactNative;
+});
+
+jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);

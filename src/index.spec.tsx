@@ -1,6 +1,15 @@
-import renderer from 'react-test-renderer';
+import { cleanup, render, screen } from '@testing-library/react-native';
 
 import Main from '.';
+
+jest.mock('expo-status-bar');
+jest.mock('@nandorojo/swr-firestore');
+jest.mock('./navigation');
+jest.mock('./services/firebase/config', () => {
+  return {
+    fuego: {},
+  };
+});
 
 jest.mock('./hooks/useOnAppStart', () =>
   jest.fn(() => ({
@@ -14,10 +23,14 @@ jest.mock('./hooks/useOnAppStart', () =>
   })),
 );
 
-describe('<Main />', () => {
-  it('renders correctly', () => {
-    const tree = renderer.create(<Main />).toJSON();
+afterEach(cleanup);
 
-    expect(tree).toMatchSnapshot();
-  });
+afterAll(() => {
+  jest.clearAllMocks();
+});
+
+it('renders correctly', async () => {
+  render(<Main />);
+
+  expect(screen.toJSON()).toMatchSnapshot();
 });

@@ -33,10 +33,13 @@ class CustomFuego {
 
   public functions: typeof FirebaseFunctions;
 
+  public storage: typeof FirebaseStorage;
+
   constructor() {
     this.db = FirebaseFirestore();
     this.auth = FirebaseAuth;
     this.functions = FirebaseFunctions;
+    this.storage = FirebaseStorage;
   }
 }
 
