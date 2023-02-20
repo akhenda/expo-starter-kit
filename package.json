@@ -19,6 +19,7 @@
     "test:update-snapshots": "jest -u --coverage=false",
     "test:ci": "jest --coverage",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prettify:js": "prettier --write '**/*.js{,x}'",
     "prettify:json": "prettier --write '**/*.json'",
     "prettify:md": "prettier --write '**/*.md'",

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert, Linking, Platform } from 'react-native';
 import { Button } from 'react-native-ui-lib';

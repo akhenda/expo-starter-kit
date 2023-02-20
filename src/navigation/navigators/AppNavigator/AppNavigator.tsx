@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { AuthNavigator } from '@navigation/navigators/AuthNavigator';

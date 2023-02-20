@@ -1,4 +1,3 @@
-import React from 'react';
 import * as VectorIcons from '@expo/vector-icons';
 import noop from 'lodash/noop';
 

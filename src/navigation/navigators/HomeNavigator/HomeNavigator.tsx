@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
