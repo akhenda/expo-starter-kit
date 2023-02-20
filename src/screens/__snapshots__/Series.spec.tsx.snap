@@ -451,7 +451,6 @@ exports[`renders correctly 1`] = `
           light
         </Text>
         <View
-          collapsable={false}
           style={
             [
               undefined,
@@ -464,97 +463,14 @@ exports[`renders correctly 1`] = `
               [
                 {},
                 undefined,
+                undefined,
+                undefined,
               ],
             ]
           }
         >
           <View
-            style={
-              [
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                [
-                  {
-                    "borderBottomWidth": 1,
-                    "borderColor": "#F0F2F5",
-                    "flexDirection": "row",
-                    "justifyContent": undefined,
-                    "paddingBottom": 10,
-                  },
-                  undefined,
-                  {
-                    "borderColor": "#D2D6D8",
-                  },
-                  {
-                    "paddingTop": undefined,
-                  },
-                ],
-              ]
-            }
-          >
-            <TextInput
-              accessibilityLabel=". Mandatory"
-              editable={true}
-              enableErrors={true}
-              maxLength={30}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              placeholder="Placeholder"
-              placeholderTextColor="#6E7881"
-              showCharCounter={true}
-              style={
-                [
-                  undefined,
-                  {
-                    "backgroundColor": "transparent",
-                    "borderColor": "transparent",
-                    "borderWidth": undefined,
-                    "flexGrow": 1,
-                    "padding": 0,
-                    "textAlign": "left",
-                  },
-                  {
-                    "fontFamily": "System",
-                    "fontSize": 16,
-                    "fontWeight": "400",
-                  },
-                  undefined,
-                  false,
-                  undefined,
-                  {
-                    "color": "#20303C",
-                  },
-                  undefined,
-                ]
-              }
-              underlineColorAndroid="transparent"
-              validate={
-                [
-                  "required",
-                  "email",
-                  [Function],
-                ]
-              }
-              validateOnBlur={true}
-              validationMessage={
-                [
-                  "Field is required",
-                  "Email is invalid",
-                  "Password is too short",
-                ]
-              }
-              value="john@doe.me"
-            />
-          </View>
-          <View
+            centerV={true}
             row={true}
             style={
               [
@@ -565,19 +481,27 @@ exports[`renders correctly 1`] = `
                 {},
                 {},
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                 },
-                undefined,
+                [
+                  {},
+                  [
+                    undefined,
+                    undefined,
+                  ],
+                ],
               ]
             }
           >
             <View
+              flexG={true}
               style={
                 [
                   undefined,
                   undefined,
                   {
-                    "flex": 1,
+                    "flexGrow": 1,
                   },
                   undefined,
                   {},
@@ -587,44 +511,138 @@ exports[`renders correctly 1`] = `
                 ]
               }
             >
-              <Text
-                accessible={false}
+              <TextInput
+                accessibilityState={
+                  {
+                    "disabled": false,
+                  }
+                }
+                editable={true}
+                maxLength={30}
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder="Placeholder"
                 style={
                   [
                     {
-                      "backgroundColor": "transparent",
-                      "color": "#20303C",
+                      "flexGrow": 1,
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
                       "textAlign": "left",
                     },
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
-                    undefined,
+                    {
+                      "color": "#20303C",
+                    },
                     [
-                      {
-                        "color": "#FC3D2F",
-                        "textAlign": "left",
-                      },
-                      {
-                        "fontFamily": "System",
-                        "fontSize": 14,
-                        "fontWeight": "400",
-                        "height": 20,
-                        "lineHeight": 20,
-                      },
-                      {
-                        "marginTop": 9,
-                      },
+                      {},
+                      undefined,
+                      undefined,
                       undefined,
                     ],
+                    false,
                   ]
                 }
+                underlineColorAndroid="transparent"
+                validate={
+                  [
+                    "required",
+                    "email",
+                    [Function],
+                  ]
+                }
+                validationMessage={
+                  [
+                    "Field is required",
+                    "Email is invalid",
+                    "Password is too short",
+                  ]
+                }
+                value="john@doe.me"
               />
             </View>
+          </View>
+          <View
+            row={true}
+            spread={true}
+            style={
+              [
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                {},
+                {},
+                {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              $textDangerLight={true}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "color": "#20303C",
+                    "textAlign": "left",
+                  },
+                  undefined,
+                  {
+                    "color": "#FC3D2F",
+                  },
+                  undefined,
+                  undefined,
+                  {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  [
+                    {
+                      "flexShrink": 1,
+                      "minHeight": 20,
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+              testID="undefined.validationMessage"
+            />
+            <Text
+              $textNeutral={true}
+              style={
+                [
+                  {
+                    "backgroundColor": "transparent",
+                    "color": "#20303C",
+                    "textAlign": "left",
+                  },
+                  undefined,
+                  {
+                    "color": "#6E7881",
+                  },
+                  undefined,
+                  undefined,
+                  {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  [
+                    {
+                      "flexGrow": 1,
+                      "textAlign": "right",
+                    },
+                    undefined,
+                  ],
+                ]
+              }
+              testID="undefined.charCounter"
+            >
+              11/30
+            </Text>
           </View>
         </View>
         <View

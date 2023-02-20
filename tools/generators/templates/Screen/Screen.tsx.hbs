@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ScrollView } from 'react-native';
-import Button from 'react-native-ui-lib/Button';
-import Text from 'react-native-ui-lib/Text';
-import TextField from 'react-native-ui-lib/TextField';
-import View from 'react-native-ui-lib/View';
+import Button from 'react-native-ui-lib/button';
+import Text from 'react-native-ui-lib/text';
+import TextField from 'react-native-ui-lib/textField';
+import View from 'react-native-ui-lib/view';
 import isEqual from 'lodash/isEqual';
 
 import { SafeAreaView, SaveAreaInset } from '@src/components';
