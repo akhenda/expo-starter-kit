@@ -77,7 +77,7 @@ specifiers:
   jest-extended: ^3.2.4
   lint-staged: ^13.1.0
   lodash: ^4.17.21
-  lottie-react-native: 5.1.4
+  lottie-react-native: 5.1.5
   msw: ^1.0.1
   npm-run-all: ^4.1.5
   path-to-regexp: ^6.2.1
@@ -156,7 +156,7 @@ dependencies:
   expo-web-browser: 12.0.0_expo@47.0.13
   i18next: 22.4.9
   lodash: 4.17.21
-  lottie-react-native: 5.1.4_tj3nonr5gneraukzjkxpsiy7yu
+  lottie-react-native: 5.1.5_tj3nonr5gneraukzjkxpsiy7yu
   path-to-regexp: 6.2.1
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -9738,8 +9738,8 @@ packages:
     dependencies:
       js-tokens: 4.0.0
 
-  /lottie-react-native/5.1.4_tj3nonr5gneraukzjkxpsiy7yu:
-    resolution: {integrity: sha512-Lu6mSG92Wck+vXEX6gfj/9ciqqoz0tJQZqgX0SumGvX/oZu4MbKO/oLApyHdy2V9Rb7qvwF9whOtitADxTswPA==}
+  /lottie-react-native/5.1.5_tj3nonr5gneraukzjkxpsiy7yu:
+    resolution: {integrity: sha512-xl6uEo50joQeIqso5SvPKt1uGBqMhgNgs+36S4725Nfigf4zAY23/I9QEEkJF+1BHq7wKCeYha2KafLTm20gqA==}
     peerDependencies:
       lottie-ios: ^3.4.0
       react: '*'
