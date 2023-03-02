@@ -5,3 +5,4 @@ ios
 node_modules
 .expo
 pnpm-lock.yaml
+.github

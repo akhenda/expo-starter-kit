@@ -1,8 +1,12 @@
-import type { TextStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 import { EmptyState } from '@src/components';
 import { View } from '@src/components/Themed';
 import { images } from '@src/theme';
+
+const containerStyles: ViewStyle = {
+  flex: 1,
+};
 
 const textStyles: TextStyle = {
   marginTop: 8,
@@ -11,7 +15,7 @@ const textStyles: TextStyle = {
 
 const Notifications = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={containerStyles}>
       <EmptyState
         imageSource={images.empty.noNotifications}
         headerText="You are all caught up"

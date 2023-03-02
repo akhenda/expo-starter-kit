@@ -1,20 +1,30 @@
-name: Main
-'on':
+name: Lint
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
   push:
     branches:
-      - dev
       - main
+      - dev
+  # Replace pull_request with pull_request_target if you
+  # plan to use this action with forks, see the Limitations section
   pull_request:
     branches:
-      - dev
       - main
+      - dev
+
+# Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+permissions:
+  checks: write
+  contents: write
 
 jobs:
-  test-and-deploy:
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
-    name: Test, Release & Deploy
     steps:
-      - name: Checkout
+      - name: Check out Git repository
         uses: actions/checkout@v3
       - name: Install PNPM Packager
         uses: pnpm/action-setup@v2.2.4
@@ -38,23 +48,9 @@ jobs:
       #     restore-keys: ${{ runner.os }}-node-
       - name: Install Deps & Run Tests
         run: pnpm install --frozen-lockfile
-      - name: Run Tests
-        run: pnpm run test:ci
-      - name: Upload Tests Coverage
-        uses: actions/upload-artifact@v3
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
         with:
-          name: coverage
-          path: coverage
-      - name: Generating coverage badges
-        uses: jpb06/jest-badges-action@latest
-        with:
-          branches: main,dev
-          commit-message: 'chore: update coverage badges [skip ci]'
-          output-folder: ./__badges__
-      - name: Deploy to Prod/Staging
-        run: echo "Deploying to production..."
-      # - name: Semantic Release
-      #   uses: cycjimmy/semantic-release-action@v3
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          tsc: true
+          eslint: true
+          prettier: true

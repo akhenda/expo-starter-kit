@@ -7,10 +7,12 @@ type HeaderProps = HeaderOptions & {
    * Whether the header is in a modal
    */
   modal?: boolean;
+
   /**
    * Layout of the screen.
    */
   layout?: Layout;
+
   /**
    * Title text for the header.
    */
