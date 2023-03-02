@@ -51,6 +51,12 @@ jobs:
           branches: main,dev
           commit-message: 'chore: update coverage badges [skip ci]'
           output-folder: ./__badges__
+      - name: Coverage Annotations
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Jest Coverage Comment
+        uses: MishaKav/jest-coverage-comment@main
       - name: Deploy to Prod/Staging
         run: echo "Deploying to production..."
       # - name: Semantic Release
