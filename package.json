@@ -22,7 +22,7 @@
     "test:debug": "jest -o --watch --coverage=false",
     "test:final": "jest",
     "test:update-snapshots": "jest -u --coverage=false",
-    "test:ci": "jest --coverage",
+    "test:ci": "jest --ci --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettify:js": "prettier --write '**/*.js{,x}'",
