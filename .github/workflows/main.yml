@@ -50,6 +50,7 @@ jobs:
         with:
           branches: main,dev
           commit-message: 'chore: update coverage badges [skip ci]'
+          output-folder: ./__badges__
       - name: Coverage Annotations
         uses: mattallty/jest-github-action@v1
         env:
