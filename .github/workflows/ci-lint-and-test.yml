@@ -1,0 +1,24 @@
+name: Lint & Test
+
+on: workflow_call # allow this workflow to be called from other workflows
+
+jobs:
+  lint:
+    name: Lint
+    uses: ./.github/workflows/ci-lint.yml  # use the callable lint job to run linting
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 🏗 Install PNPM packager
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/pnpm-install
+
+      - name: ✅ Run Tests
+        uses: ./.github/actions/run-tests

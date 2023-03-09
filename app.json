@@ -1,42 +1,39 @@
 {
   "expo": {
     "name": "expo-starter",
-    "slug": "expo-starter",
+    "slug": "expo-starter-kit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "expo-starter",
     "userInterfaceStyle": "automatic",
     "jsEngine": "hermes",
     "splash": {
       "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#194351"
+      "backgroundColor": "#FFFFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/9cee5153-b650-4374-b3ce-a92218e67978"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.akhenda.expostarter"
+      "bundleIdentifier": "com.akhenda.expostarter",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#194351"
       },
-      "package": "com.akhenda.expostarter"
+      "package": "com.akhenda.expostarter",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
     },
-    "plugins": [
-      "expo-community-flipper"
-    ],
     "extra": {
       "eas": {
         "projectId": "9cee5153-b650-4374-b3ce-a92218e67978"
@@ -44,6 +41,22 @@
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
-    }
+    },
+    "plugins": [
+      "expo-community-flipper",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
+      "@react-native-firebase/perf",
+      "@react-native-firebase/dynamic-links",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "flipper": true
+          }
+        }
+      ]
+    ]
   }
 }

@@ -1,0 +1,33 @@
+name: Run Tests
+description: Run jest tests with covergate and generate coverage badges and annotations
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: Run Tests and Generate Coverage Annotations
+      uses: mattallty/jest-github-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        test-command: pnpm run test:ci
+        # changes-only: true
+        # To avoid reporting code coverage, set this variable to false
+        coverage-comment: false
+
+    - name: Jest Coverage Comment
+      uses: MishaKav/jest-coverage-comment@main
+
+    # - name: Upload Tests Coverage
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #     name: coverage
+    #     path: coverage
+
+    - name: Generating coverage badges
+      uses: jpb06/jest-badges-action@latest
+      if: github.event_name != 'pull_request'
+      with:
+        branches: main,dev
+        commit-message: 'chore: update coverage badges [skip ci]'
+        output-folder: ./__badges__

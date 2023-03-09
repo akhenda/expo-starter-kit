@@ -26,25 +26,16 @@ jobs:
     name: Run Linters
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Git repository
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Install PNPM Packager
+
+      - name: 🏗 Install PNPM packager
         uses: pnpm/action-setup@v2.2.4
-      - name: Get PNPM Store Directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - name: Setup PNPM Cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install Deps & Run Tests
-        run: pnpm install --frozen-lockfile
-      - name: Linting
+
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/pnpm-install
+
+      - name: 🐛 Linting
         uses: wearerequired/lint-action@v2
         with:
           tsc: true

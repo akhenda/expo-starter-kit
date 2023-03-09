@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  ci-lint-and-test:
+    name: Lint and Test
+    uses: ./.github/workflows/ci-lint-and-test.yml
+
+  semantic-release:
+    name: Semantic Release
+    needs: [ci-lint-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 🏗 Install PNPM packager
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/pnpm-install
+
+      - name: Run Semantic Release
+        uses: cycjimmy/semantic-release-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
