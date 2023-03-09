@@ -5,13 +5,13 @@ runs:
   using: 'composite'
 
   steps:
-    - name: 🏗 Get PNPM Store Directory
+    - name: 🏗 Get PNPM store directory
       id: pnpm-cache
       shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-    - name: 🏗 Setup PNPM Cache
+    - name: 🏗 Setup PNPM cache
       uses: actions/cache@v3
       with:
         path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
@@ -19,5 +19,6 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
-    - name: 📦 PNPM Install
+    - name: 📦 PNPM install
+      shell: bash
       run: pnpm install --frozen-lockfile

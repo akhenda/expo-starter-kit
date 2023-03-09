@@ -1,5 +1,9 @@
 name: Run Tests
 description: Run jest tests with covergate and generate coverage badges and annotations
+inputs:
+  github-token:
+    description: 'Github Token'
+    required: true
 
 runs:
   using: 'composite'
@@ -8,7 +12,7 @@ runs:
     - name: Run Tests and Generate Coverage Annotations
       uses: mattallty/jest-github-action@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.github-token }}
       with:
         test-command: pnpm run test:ci
         # changes-only: true

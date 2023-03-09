@@ -22,3 +22,5 @@ jobs:
 
       - name: ✅ Run Tests
         uses: ./.github/actions/run-tests
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

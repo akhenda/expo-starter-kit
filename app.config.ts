@@ -2,7 +2,7 @@ import type { ConfigContext, ExpoConfig } from '@expo/config';
 import dotenv from 'dotenv';
 
 dotenv.config({
-  path: `.env.${process.env.APP_VARIANT} ?? 'development'`,
+  path: `.env.${process.env.APP_VARIANT ?? 'development'}`,
 });
 
 const { APP_VARIANT } = process.env;
@@ -22,60 +22,83 @@ const SHARED_SPLASH = {
 };
 
 const getVariantConfig = (config: ConfigContext['config'], variant: NodeJS.AppVariant) => {
-  return {
-    development: {
-      ...config,
-      android: {
-        ...config.android,
-        package: 'dev.com.akhenda.expostarter',
-      },
-      icon: './assets/icon-dev.png',
-      ios: {
-        ...config.ios,
-        bundleIdentifier: 'dev.com.akhenda.expostarter',
-      },
-      name: `[DEV] ${config.name}`,
+  const identifier = {
+    development: 'dev',
+    preview: 'preview',
+    production: '',
+    rc: 'rc',
+  }[variant];
+
+  const variantConfig = {
+    ...config,
+    android: {
+      ...config.android,
+      package: `com.akhenda.expostarter${identifier ? `.${identifier}` : ''}`,
     },
-    preview: {
-      ...config,
-      android: {
-        ...config.android,
-        package: 'preview.com.akhenda.expostarter',
-      },
-      icon: './assets/icon-preview.png',
-      ios: {
-        ...config.ios,
-        bundleIdentifier: 'preview.com.akhenda.expostarter',
-      },
-      name: `[PREVIEW] ${config.name}`,
+    icon: `./assets/icon${identifier ? `-${identifier}` : ''}.png`,
+    ios: {
+      ...config.ios,
+      bundleIdentifier: `com.akhenda.expostarter${identifier ? `.${identifier}` : ''}`,
     },
-    production: {
-      ...config,
-      android: {
-        ...config.android,
-        package: 'com.akhenda.expostarter',
-      },
-      icon: './assets/icon.png',
-      ios: {
-        ...config.ios,
-        bundleIdentifier: 'com.akhenda.expostarter',
-      },
-      name: config.name,
-    },
-    rc: {
-      ...config,
-      android: {
-        ...config.android,
-        package: 'rc.com.akhenda.expostarter',
-      },
-      icon: './assets/icon-rc.png',
-      ios: {
-        ...config.ios,
-        bundleIdentifier: 'rc.com.akhenda.expostarter',
-      },
-      name: `[RC] ${config.name}`,
-    },
-  }[variant] as ExpoConfig;
+    name: `${config.name} ${identifier ? `(${identifier.toUpperCase()})` : ''}`,
+  } as ExpoConfig;
+
+  // const variantConfig = {
+  //   development: {
+  //     ...config,
+  //     android: {
+  //       ...config.android,
+  //       package: 'com.akhenda.expostarter.dev',
+  //     },
+  //     icon: './assets/icon-dev.png',
+  //     ios: {
+  //       ...config.ios,
+  //       bundleIdentifier: 'com.akhenda.expostarter.dev',
+  //     },
+  //     name: `${config.name} (DEV)`,
+  //   },
+  //   preview: {
+  //     ...config,
+  //     android: {
+  //       ...config.android,
+  //       package: 'com.akhenda.expostarter.preview',
+  //     },
+  //     icon: './assets/icon-preview.png',
+  //     ios: {
+  //       ...config.ios,
+  //       bundleIdentifier: 'com.akhenda.expostarter.preview',
+  //     },
+  //     name: `${config.name} (PREVIEW)`,
+  //   },
+  //   production: {
+  //     ...config,
+  //     android: {
+  //       ...config.android,
+  //       package: 'com.akhenda.expostarter',
+  //     },
+  //     icon: './assets/icon.png',
+  //     ios: {
+  //       ...config.ios,
+  //       bundleIdentifier: 'com.akhenda.expostarter',
+  //     },
+  //     name: config.name,
+  //   },
+  //   rc: {
+  //     ...config,
+  //     android: {
+  //       ...config.android,
+  //       package: 'com.akhenda.expostarter.rc',
+  //     },
+  //     icon: './assets/icon-rc.png',
+  //     ios: {
+  //       ...config.ios,
+  //       bundleIdentifier: 'com.akhenda.expostarter.rc',
+  //     },
+  //     name: `${config.name} (RC)`,
+  //   },
+  // }[variant] as ExpoConfig;
+
+  return variantConfig;
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => ({

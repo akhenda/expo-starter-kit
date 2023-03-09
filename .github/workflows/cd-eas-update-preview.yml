@@ -9,6 +9,7 @@ on:
 jobs:
   ci-lint-and-test:
     uses: ./.github/workflows/ci-lint-and-test.yml
+    name: Lint & Test
 
   eas-update-preview:
     runs-on: ubuntu-latest
@@ -29,31 +30,17 @@ jobs:
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
+          expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
         uses: ./.github/actions/pnpm-install
 
-      # - name: 🚀 Create preview update
-      #   run: eas update --branch=preview --non-interactive --message "update preview channel to ${GITHUB_HEAD_REF}"
-
-      # - name: 💬 Comment in preview
-      #   uses: expo/expo-github-action/preview-comment@v7
-      #   with:
-      #     channel: preview
-
-      # - name: Slack Notification
-      #   uses: rtCamp/action-slack-notify@v2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      #     SLACK_CHANNEL: REPLACE-ME
-      #     SLACK_MESSAGE: ":rocket: Updated Preview app to ${{env.GITHUB_HEAD_REF}}"
-
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
         id: preview
         with:
-          command: eas update --auto
+          command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
 
       # Find the PR associated with this push, if there is one.
       - name: 📄 Get PR details
@@ -61,9 +48,67 @@ jobs:
         id: findPr
 
       - name: 💬 Comment in Slack
-        uses: slackapi/slack-github-action@v1.17.0
+        uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
         with:
           channel-id: engineering
-          slack-message: ':rocket: New Preview EAS update from PR #${{ steps.findPr.outputs.pr }} is available!\n- Preview: ${{ steps.preview.outputs.qr }}'
+          # slack-message: ":rocket: New Preview EAS update from PR <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|*#${{ steps.findPr.outputs.pr }}*> is available!\n- Preview: ${{ steps.preview.outputs.qr }}"
+          payload: |
+            {
+              "text": "${{ steps.preview.outputs.projectName }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":rocket: New Preview EAS update from PR *#${{ steps.findPr.outputs.pr }}* is available!"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ">_${{ steps.preview.outputs.message }}_"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Open PR",
+                        "emoji": true
+                      },
+                      "value": "open",
+                      "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Open Update",
+                        "emoji": true
+                      },
+                      "value": "open_update",
+                      "url": "${{ steps.preview.outputs.link }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Preview Update",
+                        "emoji": true
+                      },
+                      "value": "preview",
+                      "url": "${{ steps.preview.outputs.qr }}"
+                    }
+                  ]
+                }
+              ]
+            }

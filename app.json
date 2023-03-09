@@ -3,6 +3,7 @@
     "name": "expo-starter",
     "slug": "expo-starter-kit",
     "version": "1.0.0",
+    "description": "My Expo Starter Kit. Highly opinionated. Use at own risk.",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "scheme": "expo-starter",

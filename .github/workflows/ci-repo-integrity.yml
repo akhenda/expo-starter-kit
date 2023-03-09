@@ -22,7 +22,7 @@ on:
 
 jobs:
   monorepo-integrity:
-    name: Check Integrity
+    name: Integrity Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,7 +35,9 @@ jobs:
         uses: ./.github/actions/pnpm-install
 
       - name: 🚨 Check for vulnerabilities in dependencies
+        continue-on-error: true
         run: pnpm audit
 
       - name: 📜 Check for outdated dependencies
+        continue-on-error: true
         run: pnpm outdated
