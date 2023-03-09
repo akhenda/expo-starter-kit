@@ -19,6 +19,15 @@ const images = {
     rocket: require('~assets/images/icons/rocket.png'),
   },
   logo: require('~assets/images/icons/logo.png'),
+  onboarding: {
+    liquidSwipe: [
+      require('~assets/images/onboarding/liquid-swipe/1.png'),
+      require('~assets/images/onboarding/liquid-swipe/2.png'),
+      require('~assets/images/onboarding/liquid-swipe/3.png'),
+      require('~assets/images/onboarding/liquid-swipe/4.png'),
+      require('~assets/images/onboarding/liquid-swipe/5.png'),
+    ],
+  },
 };
 
 export default images;

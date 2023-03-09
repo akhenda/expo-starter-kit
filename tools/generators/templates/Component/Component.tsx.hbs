@@ -1,11 +1,10 @@
-import React from 'react';
 import Text from 'react-native-ui-lib/text';
 import View from 'react-native-ui-lib/view';
 
 import { $container } from './{{pascalCase name}}.styles';
 import type { {{pascalCase name}}Props } from './{{pascalCase name}}.types';
 
-const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props): React.ReactElement => {
+const {{pascalCase name}} = ({ style: $style }: {{pascalCase name}}Props) => {
   return (
     <View style={[$container, $style]}>
       <Text>{{pascalCase name}}</Text>

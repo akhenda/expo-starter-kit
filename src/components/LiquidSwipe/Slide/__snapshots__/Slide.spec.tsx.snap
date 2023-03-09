@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+[
+  <RNSVGSvgView
+    bbHeight="100%"
+    bbWidth="100%"
+    focusable={false}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        {
+          "flex": 0,
+          "height": "100%",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <RNSVGGroup>
+      <RNSVGDefs>
+        <RNSVGRadialGradient
+          cx="50%"
+          cy="35%"
+          fx="50%"
+          fy="35%"
+          gradient={
+            [
+              0,
+              -3355393,
+              1,
+              -16776961,
+            ]
+          }
+          gradientTransform={null}
+          gradientUnits={0}
+          name="gradient"
+          rx="50%"
+          ry="50%"
+        />
+      </RNSVGDefs>
+      <RNSVGRect
+        fill={
+          {
+            "brushRef": "gradient",
+            "type": 1,
+          }
+        }
+        height="1334"
+        propList={
+          [
+            "fill",
+          ]
+        }
+        width="750"
+        x="0"
+        y="0"
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>,
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "bottom": 0,
+        "left": 0,
+        "padding": 75,
+        "paddingTop": 150,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <Image
+      source={null}
+      style={
+        {
+          "height": 675,
+          "width": 675,
+        }
+      }
+    />
+    <View>
+      <Text
+        style={
+          {
+            "color": "white",
+            "fontFamily": "SFProDisplay-Bold",
+            "fontSize": 48,
+            "marginBottom": 16,
+            "textAlign": "center",
+          }
+        }
+      >
+        Test
+      </Text>
+      <Text
+        style={
+          {
+            "color": "white",
+            "fontFamily": "SFProDisplay-Regular",
+            "fontSize": 18,
+            "textAlign": "center",
+          }
+        }
+      >
+        Testing
+      </Text>
+    </View>
+  </View>,
+]
+`;
