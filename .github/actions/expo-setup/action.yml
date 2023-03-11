@@ -16,18 +16,9 @@ runs:
           exit 1
         fi
 
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    # - name: 🏗 Install PNPM packager
-    #   uses: pnpm/action-setup@v2.2.4
-
     - name: 🏗 Setup EAS
       uses: expo/expo-github-action@v8
       with:
         eas-version: latest
         expo-version: latest
         token: ${{ inputs.expo-token }}
-
-    # - name: 📦 Install dependencies
-    #   uses: ./.github/actions/pnpm-install

@@ -24,7 +24,7 @@ on: workflow_call
 
 jobs:
   deps-integrity:
-    name: Dependencies Checks
+    name: Dependency Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
