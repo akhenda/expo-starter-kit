@@ -53,7 +53,7 @@ jobs:
   #   uses: ./.github/workflows/ci-todo-to-issue.yml
 
   final-touches:
-    name: Final Touches
+    name: Finale
     runs-on: ubuntu-latest
     needs: [cd-eas-update-dev, cd-eas-update-main]
     steps:

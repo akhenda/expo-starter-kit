@@ -22,6 +22,9 @@ const getVariantConfig = (config: ConfigContext['config'], variant: NodeJS.AppVa
     ...config,
     android: {
       ...config.android,
+      adaptiveIcon: {
+        foregroundImage: `./assets/images/adaptive-icon${identifier ? `-${identifier}` : ''}.png`,
+      },
       package: `com.akhenda.expostarter${identifier ? `.${identifier}` : ''}`,
     },
     icon: `./assets/icon${identifier ? `-${identifier}` : ''}.png`,

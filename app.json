@@ -32,7 +32,7 @@
       },
       "package": "com.akhenda.expostarter",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 0
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
