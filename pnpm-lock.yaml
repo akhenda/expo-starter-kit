@@ -33,6 +33,7 @@ specifiers:
   '@semantic-release/changelog': 6.0.2
   '@semantic-release/git': 10.0.1
   '@semantic-release/github': 8.0.7
+  '@semantic-release/npm': ^9.0.2
   '@testing-library/jest-native': 5.4.1
   '@testing-library/react-native': 11.5.0
   '@types/color': 3.0.3
@@ -205,6 +206,7 @@ devDependencies:
   '@semantic-release/changelog': 6.0.2_semantic-release@20.1.1
   '@semantic-release/git': 10.0.1_semantic-release@20.1.1
   '@semantic-release/github': 8.0.7_semantic-release@20.1.1
+  '@semantic-release/npm': 9.0.2_semantic-release@20.1.1
   '@testing-library/jest-native': 5.4.1_36vzno5z2xsbftuvrey5zygoea
   '@testing-library/react-native': 11.5.0_ts3xxxvvvnuzexgidrgbha255i
   '@types/color': 3.0.3

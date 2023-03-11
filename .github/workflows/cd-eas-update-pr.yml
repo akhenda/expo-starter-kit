@@ -31,7 +31,6 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         id: preview
         with:
-          # command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
           command: eas update --auto --branch=preview
 
       - name: 💬 Comment on Slack
@@ -48,7 +47,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":rocket: New Preview EAS update from PR *#${{ github.event.number }}* is available!"
+                    "text": ":rocket: New EAS update from PR *#${{ github.event.number }}* is available!"
                   }
                 },
                 {
