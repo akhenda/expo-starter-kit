@@ -22,7 +22,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.akhenda.expostarter",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,7 +31,8 @@
         "backgroundColor": "#194351"
       },
       "package": "com.akhenda.expostarter",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 0
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
