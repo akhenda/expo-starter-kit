@@ -23,8 +23,8 @@ name: Repo Integrity
 on: workflow_call
 
 jobs:
-  monorepo-integrity:
-    name: Integrity Checks
+  deps-integrity:
+    name: Dependencies Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -51,3 +51,10 @@ jobs:
         if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
         continue-on-error: true
         run: pnpm outdated
+
+  other-repo-checks:
+    name: Other Repo Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🤔 What should we check next?
+        run: echo 'What should we check next? 🤷‍♂️'

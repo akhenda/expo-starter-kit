@@ -6,8 +6,8 @@ jobs:
   lint:
     name: Lint
     uses: ./.github/workflows/ci-lint.yml  # use the callable lint job to run linting
+
   test:
-    needs: lint
     runs-on: ubuntu-latest
     name: Test
     steps:

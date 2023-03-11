@@ -15,10 +15,10 @@ runs:
 
   steps:
     - name: 🗃️ Verify changed files
-        uses: tj-actions/changed-files@v35
-        id: changed-files
-        with:
-          files: |
-             package.json
-             pnpm-lock.yaml
-             .github/**/*.yml
+      uses: tj-actions/changed-files@v35
+      id: changed-files
+      with:
+        files: |
+            package.json
+            pnpm-lock.yaml
+            .github/**/*.yml
