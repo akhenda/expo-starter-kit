@@ -1,6 +1,10 @@
 {
   "branches": [
-    "dev"
+    "main",
+    {
+      "name": "dev",
+      "prerelease": "rc"
+    }
   ],
   "verifyConditions": [
     "semantic-release-expo",

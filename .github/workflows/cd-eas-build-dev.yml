@@ -1,0 +1,55 @@
+name: Build Dev Client & Preview
+
+# on:
+#   push:
+#     branches:
+#       - dev
+#     paths:
+#       - 'package.json'
+#       - 'pnpm-lock.yaml'
+#       - '.github/**'
+
+on: workflow_call
+
+jobs:
+  build-dev-client:
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    runs-on: ubuntu-latest
+    name: Build Development Client
+    environment: development
+    env:
+      APP_VARIANT: ${{ vars.APP_VARIANT }}
+    steps:
+      - name: ⚛️ Expo setup
+        uses: ./.github/actions/expo-setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🏁 Verify conditions
+        id: verify-conditions
+        uses: ./.github/actions/verify-conditions
+
+      - name: 🚀 Build app
+        if: steps.verify-conditions.outputs.should-build == 'true'
+        run: eas build --channel=dev-client
+
+  build-preview:
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    runs-on: ubuntu-latest
+    name: Build Preview
+    environment: preview
+    env:
+      APP_VARIANT: ${{ vars.APP_VARIANT }}
+    steps:
+      - name: ⚛️ Expo setup
+        uses: ./.github/actions/expo-setup
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🏁 Verify conditions
+        id: verify-conditions
+        uses: ./.github/actions/verify-conditions
+
+      - name: 🚀 Build app
+        if: steps.verify-conditions.outputs.should-build == 'true'
+        run: eas build --channel=preview

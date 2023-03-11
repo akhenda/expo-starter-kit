@@ -1,15 +1,17 @@
 name: Release
 
-on:
-  push:
-    branches:
-      - main
-      - dev
+# on:
+#   push:
+#     branches:
+#       - main
+#       - dev
+
+on: workflow_call
 
 jobs:
-  ci-lint-and-test:
-    name: Lint and Test
-    uses: ./.github/workflows/ci-lint-and-test.yml
+  # ci-lint-and-test:
+  #   name: Lint and Test
+  #   uses: ./.github/workflows/ci-lint-and-test.yml
 
   semantic-release:
     name: Semantic Release

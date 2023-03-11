@@ -1,0 +1,33 @@
+name: Expo Setup
+description: Setup Expo with the provided token
+inputs:
+  expo-token:
+    description: 'Expo Token used for auth and deployments'
+    required: true
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: ☑️ Check for EXPO_TOKEN
+      run: |
+        if [ -z "${{ inputs.expo-token }}" ]; then
+          echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+          exit 1
+        fi
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # - name: 🏗 Install PNPM packager
+    #   uses: pnpm/action-setup@v2.2.4
+
+    - name: 🏗 Setup EAS
+      uses: expo/expo-github-action@v8
+      with:
+        eas-version: latest
+        expo-version: latest
+        token: ${{ inputs.expo-token }}
+
+    # - name: 📦 Install dependencies
+    #   uses: ./.github/actions/pnpm-install
