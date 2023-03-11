@@ -29,7 +29,7 @@ jobs:
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       # - name: 📲 Get release
       #   id: get_release
@@ -40,7 +40,7 @@ jobs:
       - name: 🚀 Create rc update
         run: eas update --auto --branch=rc
 
-      - name: 💬 Comment in Slack
+      - name: 💬 Comment on Slack
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}

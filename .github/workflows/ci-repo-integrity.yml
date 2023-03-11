@@ -34,13 +34,9 @@ jobs:
         id: verify-conditions
         uses: ./.github/actions/verify-conditions
 
-      - name: 🏗 Install PNPM packager
-        if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
-        uses: pnpm/action-setup@v2.2.4
-
       - name: 📦 Install dependencies
         if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
-        uses: ./.github/actions/pnpm-install
+        uses: ./.github/actions/install-deps
 
       - name: 🚨 Check for vulnerabilities in dependencies
         if: steps.verify-conditions.outputs.check-deps-integrity == 'true'

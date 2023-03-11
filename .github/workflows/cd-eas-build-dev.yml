@@ -23,7 +23,7 @@ jobs:
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏁 Verify conditions
         id: verify-conditions
@@ -31,7 +31,7 @@ jobs:
 
       - name: 🚀 Build app
         if: steps.verify-conditions.outputs.should-build == 'true'
-        run: eas build --channel=dev-client
+        run: eas build --profile dev-client --platform all --non-interactive
 
   build-preview:
     if: ${{ github.ref == 'refs/heads/dev' }}
@@ -44,7 +44,7 @@ jobs:
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏁 Verify conditions
         id: verify-conditions
@@ -52,4 +52,4 @@ jobs:
 
       - name: 🚀 Build app
         if: steps.verify-conditions.outputs.should-build == 'true'
-        run: eas build --channel=preview
+        run: eas build --profile preview --platform all --non-interactive

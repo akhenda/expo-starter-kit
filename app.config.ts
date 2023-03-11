@@ -1,27 +1,16 @@
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import dotenv from 'dotenv';
 
-dotenv.config({
-  path: `.env.${process.env.APP_VARIANT ?? 'development'}`,
-});
+dotenv.config();
 
 const { APP_VARIANT } = process.env;
-
-const LIGHT_SPLASH = {
-  backgroundColor: '#FFFFFF',
-  resizeMode: 'contain',
-};
-
-const DARK_SPLASH = {
-  backgroundColor: '#194351',
-  resizeMode: 'contain',
-};
-
+const DARK_SPLASH = { backgroundColor: '#194351', resizeMode: 'contain' };
+const LIGHT_SPLASH = { backgroundColor: '#FFFFFF', resizeMode: 'contain' };
 const SHARED_SPLASH = {
   splash: { ...LIGHT_SPLASH, dark: { ...DARK_SPLASH } } as ConfigContext['config']['splash'],
 };
 
-const getVariantConfig = (config: ConfigContext['config'], variant: NodeJS.AppVariant) => {
+const getVariantConfig = (config: ConfigContext['config'], variant: NodeJS.AppVariant = 'development') => {
   const identifier = {
     development: 'dev',
     preview: 'preview',

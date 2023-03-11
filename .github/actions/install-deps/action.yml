@@ -1,0 +1,19 @@
+name: PNPM Setup
+description: Run pnpm install with node_modules linked and cache enabled
+
+runs:
+  using: 'composite'
+
+  steps:
+    - name: 🏗 Install PNPM packager
+      uses: pnpm/action-setup@v2
+
+    - name: 🏗 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: 'package.json'
+        cache: 'pnpm'
+
+    - name: 📦 PNPM install
+      shell: bash
+      run: pnpm install --frozen-lockfile

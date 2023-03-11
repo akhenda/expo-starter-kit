@@ -23,7 +23,7 @@ jobs:
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏁 Verify conditions
         id: verify-conditions
@@ -31,11 +31,19 @@ jobs:
 
       - name: 🚀 Build app
         if: steps.verify-conditions.outputs.should-build == 'true'
-        run: eas build --channel=rc
+        run: eas build --profile rc --platform all --non-interactive
 
       - name: Deploy both Android & iOS to Firebase App Distribution
         if: steps.verify-conditions.outputs.should-build == 'true'
         run: echo 'Submitting to Firebase'
+
+      - name: 💬 Comment on Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        with:
+          channel-id: deployments
+          slack-message: ':rocket: New RC apps deployed on Firebase'
 
   build-prod:
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -48,7 +56,7 @@ jobs:
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🏁 Verify conditions
         id: verify-conditions
@@ -56,8 +64,16 @@ jobs:
 
       - name: 🚀 Build app
         if: steps.verify-conditions.outputs.should-build == 'true'
-        run: eas build --channel=production
+        run: eas build --profile production --platform all --non-interactive
 
       - name: Deploy to stores
         if: steps.verify-conditions.outputs.should-build == 'true'
         run: echo 'Run the eas build command with auto-submit'
+
+      - name: 💬 Comment on Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        with:
+          channel-id: deployments
+          slack-message: ':rocket: New Production apps submitted to stores'

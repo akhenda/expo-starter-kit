@@ -19,16 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: 🏗 Install PNPM packager
-        uses: pnpm/action-setup@v2.2.4
-
       - name: 📦 Install dependencies
-        uses: ./.github/actions/pnpm-install
+        uses: ./.github/actions/install-deps
 
       - name: ⚛️ Expo setup
         uses: ./.github/actions/expo-setup
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 🚀 Publish preview
         uses: expo/expo-github-action/preview@v8
@@ -37,7 +34,7 @@ jobs:
           # command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
           command: eas update --auto --branch=preview
 
-      - name: 💬 Comment in Slack
+      - name: 💬 Comment on Slack
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
@@ -58,7 +55,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ">_${{ steps.preview.outputs.message }}_"
+                    "text": ">_*Git Branch:* ${{ github.head_ref }}_\n>_*Project:* ${{ steps.preview.outputs.projectName }}_\n>_*Message:* ${{ steps.preview.outputs.message }}_"
                   }
                 },
                 {

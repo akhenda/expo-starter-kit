@@ -1,8 +1,8 @@
 name: Expo Setup
 description: Setup Expo with the provided token
 inputs:
-  expo-token:
-    description: 'Expo Token used for auth and deployments'
+  token:
+    description: "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
     required: true
 
 runs:
@@ -10,15 +10,20 @@ runs:
 
   steps:
     - name: ☑️ Check for EXPO_TOKEN
+      shell: bash
+      env:
+        EXPO_TOKEN: ${{ inputs.token }}
       run: |
-        if [ -z "${{ inputs.expo-token }}" ]; then
+        if [ -z "${{ inputs.token }}" ]; then
           echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
           exit 1
         fi
 
     - name: 🏗 Setup EAS
       uses: expo/expo-github-action@v8
+      env:
+        EXPO_TOKEN: ${{ inputs.token }}
       with:
         eas-version: latest
         expo-version: latest
-        token: ${{ inputs.expo-token }}
+        token: ${{ inputs.token }}

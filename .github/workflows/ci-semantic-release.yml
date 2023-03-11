@@ -21,11 +21,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: 🏗 Install PNPM packager
-        uses: pnpm/action-setup@v2.2.4
-
       - name: 📦 Install dependencies
-        uses: ./.github/actions/pnpm-install
+        uses: ./.github/actions/install-deps
 
       - name: Run Semantic Release
         uses: cycjimmy/semantic-release-action@v3
