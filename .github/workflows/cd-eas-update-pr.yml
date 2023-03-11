@@ -1,21 +1,17 @@
-name: Deploy Preview
+name: Publish Preview Update
 
-on:
-  pull_request:
-    branches:
-      - dev
-      - main
+# on:
+#   pull_request:
+#     branches:
+#       - dev
+
+on: workflow_call
 
 jobs:
-  ci-lint-and-test:
-    uses: ./.github/workflows/ci-lint-and-test.yml
-    name: Lint & Test
-
   eas-update-preview:
     runs-on: ubuntu-latest
     name: EAS Update Preview
     environment: preview
-    needs: [ci-lint-and-test]
     env:
       APP_VARIANT: ${{ vars.APP_VARIANT }}
 
@@ -23,37 +19,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: 🏗 Install PNPM packager
-        uses: pnpm/action-setup@v2.2.4
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/install-deps
 
-      - name: 🏗 Setup EAS
-        uses: expo/expo-github-action@v8
+      - name: ⚛️ Expo setup
+        uses: ./.github/actions/expo-setup
         with:
-          eas-version: latest
-          expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        uses: ./.github/actions/pnpm-install
-
-      - name: 🚀 Create preview
+      - name: 🚀 Publish preview
         uses: expo/expo-github-action/preview@v8
         id: preview
         with:
-          command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
+          # command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
+          command: eas update --auto --branch=preview
 
-      # Find the PR associated with this push, if there is one.
-      - name: 📄 Get PR details
-        uses: jwalton/gh-find-current-pr@v1
-        id: findPr
-
-      - name: 💬 Comment in Slack
+      - name: 💬 Comment on Slack
         uses: slackapi/slack-github-action@v1.23.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
         with:
           channel-id: engineering
-          # slack-message: ":rocket: New Preview EAS update from PR <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|*#${{ steps.findPr.outputs.pr }}*> is available!\n- Preview: ${{ steps.preview.outputs.qr }}"
           payload: |
             {
               "text": "${{ steps.preview.outputs.projectName }}",
@@ -62,14 +48,14 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":rocket: New Preview EAS update from PR *#${{ steps.findPr.outputs.pr }}* is available!"
+                    "text": ":rocket: New Preview EAS update from PR *#${{ github.event.number }}* is available!"
                   }
                 },
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ">_${{ steps.preview.outputs.message }}_"
+                    "text": ">_*Git Branch:* ${{ github.head_ref }}_\n>_*Project:* ${{ steps.preview.outputs.projectName }}_\n>_*Message:* ${{ steps.preview.outputs.message }}_"
                   }
                 },
                 {

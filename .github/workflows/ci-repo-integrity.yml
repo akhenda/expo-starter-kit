@@ -1,43 +1,56 @@
 name: Repo Integrity
 
-on:
-  push:
-    branches:
-      - main
-      - dev
-    paths:
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '.github/**'
+# on:
+#   push:
+#     branches:
+#       - main
+#       - dev
+#     paths:
+#       - 'package.json'
+#       - 'pnpm-lock.yaml'
+#       - '.github/**'
 
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-    paths:
-      - 'package.json'
-      - 'pnpm-lock.yaml'
-      - '.github/**'
+#   pull_request:
+#     types:
+#       - opened
+#       - synchronize
+#       - reopened
+#     paths:
+#       - 'package.json'
+#       - 'pnpm-lock.yaml'
+#       - '.github/**'
+
+on: workflow_call
 
 jobs:
-  monorepo-integrity:
-    name: Integrity Checks
+  deps-integrity:
+    name: Dependency Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: 🏗 Install PNPM packager
-        uses: pnpm/action-setup@v2.2.4
+      - name: 🏁 Verify conditions
+        id: verify-conditions
+        uses: ./.github/actions/verify-conditions
 
       - name: 📦 Install dependencies
-        uses: ./.github/actions/pnpm-install
+        if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
+        uses: ./.github/actions/install-deps
 
       - name: 🚨 Check for vulnerabilities in dependencies
+        if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
         continue-on-error: true
         run: pnpm audit
 
       - name: 📜 Check for outdated dependencies
+        if: steps.verify-conditions.outputs.check-deps-integrity == 'true'
         continue-on-error: true
         run: pnpm outdated
+
+  other-repo-checks:
+    name: Other Repo Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🤔 What should we check next?
+        run: echo 'What should we check next? 🤷‍♂️'

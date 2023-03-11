@@ -1,0 +1,23 @@
+name: PR
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  ci-repo-integrity:
+    name: Repo Integrity
+    uses: ./.github/workflows/ci-repo-integrity.yml
+
+  ci-lint-and-test:
+    name: Lint and Test
+    needs: ci-repo-integrity
+    uses: ./.github/workflows/ci-lint-and-test.yml
+    secrets: inherit
+
+  cd-eas-update-pr:
+    name: EAS Update PR
+    needs: ci-lint-and-test
+    uses: ./.github/workflows/cd-eas-update-pr.yml
+    secrets: inherit

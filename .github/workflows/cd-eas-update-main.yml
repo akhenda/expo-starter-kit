@@ -1,0 +1,43 @@
+name: Publish Production Update
+
+# on:
+#   push:
+#     tags:
+#       - 'v[0-9]+.[0-9]+.[0-9]+'
+
+# on:
+#   release:
+#     types: [published]
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+on: workflow_call
+
+jobs:
+  eas-update-prod:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    name: EAS Update Prod
+    environment: production
+    env:
+      APP_VARIANT: ${{ vars.APP_VARIANT }}
+
+    steps:
+      - name: ⚛️ Expo setup
+        uses: ./.github/actions/expo-setup
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🚀 Create production update
+        run: eas update --auto --branch=production
+
+      - name: 💬 Comment on Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        with:
+          channel-id: deployments
+          slack-message: ':rocket: New Production EAS update is ready!'

@@ -1,0 +1,53 @@
+name: Merge
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  ci-repo-integrity:
+    name: Repo Integrity
+    uses: ./.github/workflows/ci-repo-integrity.yml
+
+  ci-lint-and-test:
+    name: Lint and Test
+    needs: ci-repo-integrity
+    uses: ./.github/workflows/ci-lint-and-test.yml
+    secrets: inherit
+
+  ci-semantic-release:
+    name: Release
+    needs: ci-lint-and-test
+    uses: ./.github/workflows/ci-semantic-release.yml
+    secrets: inherit
+
+  cd-eas-build-dev:
+    name: EAS Build Dev
+    needs: ci-semantic-release
+    uses: ./.github/workflows/cd-eas-build-dev.yml
+    secrets: inherit
+
+  cd-eas-build-main:
+    name: EAS Build Main
+    needs: ci-semantic-release
+    uses: ./.github/workflows/cd-eas-build-main.yml
+    secrets: inherit
+
+  cd-eas-update-dev:
+    name: EAS Update Dev
+    needs: cd-eas-build-dev
+    uses: ./.github/workflows/cd-eas-update-dev.yml
+    secrets: inherit
+
+  cd-eas-update-main:
+    name: EAS Update Main
+    needs: cd-eas-build-main
+    uses: ./.github/workflows/cd-eas-update-main.yml
+    secrets: inherit
+
+  ci-todo-to-issue:
+    name: TODO to Issue
+    needs: [cd-eas-update-dev, cd-eas-update-main]
+    uses: ./.github/workflows/ci-todo-to-issue.yml

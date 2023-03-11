@@ -1,0 +1,49 @@
+name: Publish RC Update
+
+# on:
+#   push:
+#     tags:
+#       - 'v[0-9]+.[0-9]+.[0-9]+'
+
+# on:
+#   release:
+#     types: [published]
+
+# on:
+#   push:
+#     branches:
+#       - dev
+
+on: workflow_call
+
+jobs:
+  eas-update-rc:
+    if: ${{ github.ref == 'refs/heads/dev' }}
+    runs-on: ubuntu-latest
+    name: EAS Update RC
+    environment: rc
+    env:
+      APP_VARIANT: ${{ vars.APP_VARIANT }}
+
+    steps:
+      - name: ⚛️ Expo setup
+        uses: ./.github/actions/expo-setup
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      # - name: 📲 Get release
+      #   id: get_release
+      #   uses: bruceadams/get-release@v1.3.2
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🚀 Create rc update
+        run: eas update --auto --branch=rc
+
+      - name: 💬 Comment on Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        with:
+          channel-id: deployments
+          slack-message: ':rocket: New RC EAS update is ready!'
