@@ -102,7 +102,7 @@ specifiers:
   react-native-logs: 5.0.1
   react-native-mmkv: 2.5.1
   react-native-mmkv-flipper-plugin: 1.0.0
-  react-native-reanimated: 2.12.0
+  react-native-reanimated: 3.0.2
   react-native-redash: 18.1.0
   react-native-safe-area-context: 4.4.1
   react-native-screens: ~3.18.0
@@ -143,7 +143,7 @@ dependencies:
   '@react-native-masked-view/masked-view': github.com/react-native-masked-view/masked-view/8b4b2f970e4f0dc3639dd93db8a87fefe286c42e_tj3nonr5gneraukzjkxpsiy7yu
   '@react-native-picker/picker': 2.4.8_tj3nonr5gneraukzjkxpsiy7yu
   '@react-navigation/bottom-tabs': 6.5.4_n7nfmwp46ciroegwuwzxnskohy
-  '@react-navigation/drawer': 6.5.8_iuhs5fdikcvi6vi4hovy4qbzye
+  '@react-navigation/drawer': 6.5.8_x3q2pxf7nd6w3h2g7ibwopu36i
   '@react-navigation/elements': 1.3.14_w2cizg437d66bc7wzdfp5thmbu
   '@react-navigation/native': 6.1.3_tj3nonr5gneraukzjkxpsiy7yu
   '@react-navigation/native-stack': 6.9.9_n7nfmwp46ciroegwuwzxnskohy
@@ -182,13 +182,13 @@ dependencies:
   react-native-iphone-x-helper: 1.3.1_react-native@0.70.5
   react-native-logs: 5.0.1
   react-native-mmkv: 2.5.1_tj3nonr5gneraukzjkxpsiy7yu
-  react-native-reanimated: 2.12.0_sde7ufwobm7xjtx2yy4netq6zi
-  react-native-redash: 18.1.0_hc3xacyngf3bvaupo2hzzhxixy
+  react-native-reanimated: 3.0.2_sde7ufwobm7xjtx2yy4netq6zi
+  react-native-redash: 18.1.0_pte5poqlm57snnzbleowv2t2oa
   react-native-safe-area-context: 4.4.1_tj3nonr5gneraukzjkxpsiy7yu
   react-native-screens: 3.18.2_tj3nonr5gneraukzjkxpsiy7yu
   react-native-shared-element: 0.8.4
   react-native-svg: 13.4.0_tj3nonr5gneraukzjkxpsiy7yu
-  react-native-ui-lib: 7.0.0_hc3xacyngf3bvaupo2hzzhxixy
+  react-native-ui-lib: 7.0.0_pte5poqlm57snnzbleowv2t2oa
   react-native-web: 0.18.10_ef5jwxihqo6n7gxfmzogljlgcm
   react-navigation-shared-element: 3.1.3_vizykmtxcwrbrpk6rzwc453xlu
   react-tracked: 1.7.11_2bkajway7msrchxwrvhplxy5ru
@@ -4294,7 +4294,7 @@ packages:
       use-latest-callback: 0.1.5
     dev: false
 
-  /@react-navigation/drawer/6.5.8_iuhs5fdikcvi6vi4hovy4qbzye:
+  /@react-navigation/drawer/6.5.8_x3q2pxf7nd6w3h2g7ibwopu36i:
     resolution: {integrity: sha512-24okwc1gVJex+NMwau1QfxIRUDfFvdbnwFS/N0bCUXDVu8bqsMeYA00C3xwCpvdRmANbBH4rFRniNbJLAvD4Jg==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
@@ -4311,7 +4311,7 @@ packages:
       react: 18.1.0
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
       react-native-gesture-handler: 2.8.0_tj3nonr5gneraukzjkxpsiy7yu
-      react-native-reanimated: 2.12.0_sde7ufwobm7xjtx2yy4netq6zi
+      react-native-reanimated: 3.0.2_sde7ufwobm7xjtx2yy4netq6zi
       react-native-safe-area-context: 4.4.1_tj3nonr5gneraukzjkxpsiy7yu
       react-native-screens: 3.18.2_tj3nonr5gneraukzjkxpsiy7yu
       warn-once: 0.1.1
@@ -4704,10 +4704,6 @@ packages:
     dependencies:
       '@types/node': 18.11.18
     dev: true
-
-  /@types/invariant/2.2.35:
-    resolution: {integrity: sha512-DxX1V9P8zdJPYQat1gHyY0xj3efl8gnMVjiM9iCY6y27lj+PoQWkgjt8jDqmovPqULkKVpKRg8J36iQiA+EtEg==}
-    dev: false
 
   /@types/istanbul-lib-coverage/2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -13735,8 +13731,8 @@ packages:
       react: 18.1.0
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
 
-  /react-native-reanimated/2.12.0_sde7ufwobm7xjtx2yy4netq6zi:
-    resolution: {integrity: sha512-nrlPyw+Hx9u4iJhZk9PoTvDo/QmVAd+bo7OK9Tv3hveNEF9++5oig/g3Uv9V93shy9avTYGsUprUvAEt/xdzeQ==}
+  /react-native-reanimated/3.0.2_sde7ufwobm7xjtx2yy4netq6zi:
+    resolution: {integrity: sha512-8Et90yTI9yxchGbDP79k391XZqc/64zNbASbGy8X3Vgv4EbZ1M3IkKwcIbZmbVwpA804VJ6V9nJAGUh9fP0LrA==}
     peerDependencies:
       '@babel/core': ^7.0.0-0
       react: '*'
@@ -13745,7 +13741,7 @@ packages:
       '@babel/core': 7.12.9
       '@babel/plugin-transform-object-assign': 7.18.6_@babel+core@7.12.9
       '@babel/preset-typescript': 7.18.6_@babel+core@7.12.9
-      '@types/invariant': 2.2.35
+      convert-source-map: 1.9.0
       invariant: 2.2.4
       lodash.isequal: 4.5.0
       react: 18.1.0
@@ -13756,7 +13752,7 @@ packages:
       - supports-color
     dev: false
 
-  /react-native-redash/12.6.1_hc3xacyngf3bvaupo2hzzhxixy:
+  /react-native-redash/12.6.1_pte5poqlm57snnzbleowv2t2oa:
     resolution: {integrity: sha512-SChHzssVr512PfZxGCcVMmlAzQ20k5BkC8BiSfZls6bFohLiJT3ih6Of9mPmaTENCQWe7ywTx7gzr3tAnIu2mg==}
     peerDependencies:
       react: '*'
@@ -13770,11 +13766,11 @@ packages:
       react: 18.1.0
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
       react-native-gesture-handler: 2.8.0_tj3nonr5gneraukzjkxpsiy7yu
-      react-native-reanimated: 2.12.0_sde7ufwobm7xjtx2yy4netq6zi
+      react-native-reanimated: 3.0.2_sde7ufwobm7xjtx2yy4netq6zi
       use-memo-one: 1.1.3_react@18.1.0
     dev: false
 
-  /react-native-redash/18.1.0_hc3xacyngf3bvaupo2hzzhxixy:
+  /react-native-redash/18.1.0_pte5poqlm57snnzbleowv2t2oa:
     resolution: {integrity: sha512-bdCFl/ZB7Rf2raIlU6SLV+Dc/rL6UXsQNjEVwTGBukHMeSKp1zs4zVtWaGimbN8P22N4qYvb9Jmw/K94ZWYG0Q==}
     peerDependencies:
       react: '*'
@@ -13788,7 +13784,7 @@ packages:
       react: 18.1.0
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
       react-native-gesture-handler: 2.8.0_tj3nonr5gneraukzjkxpsiy7yu
-      react-native-reanimated: 2.12.0_sde7ufwobm7xjtx2yy4netq6zi
+      react-native-reanimated: 3.0.2_sde7ufwobm7xjtx2yy4netq6zi
     dev: false
 
   /react-native-safe-area-context/4.4.1_tj3nonr5gneraukzjkxpsiy7yu:
@@ -13846,7 +13842,7 @@ packages:
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
     dev: false
 
-  /react-native-ui-lib/7.0.0_hc3xacyngf3bvaupo2hzzhxixy:
+  /react-native-ui-lib/7.0.0_pte5poqlm57snnzbleowv2t2oa:
     resolution: {integrity: sha512-DiKTArcclqeMquuaShOhJus31GaqnajlkEKn0eNZCSnBHgt5Ua5XfSfe86CoEQzjClgRTQMoNgrriUKHEw6TuQ==}
     peerDependencies:
       react: '>=17.0.1'
@@ -13867,8 +13863,8 @@ packages:
       react-freeze: 1.0.3_react@18.1.0
       react-native: 0.70.5_vkzkjl6yuqacg6rxlop2v5blfe
       react-native-gesture-handler: 2.8.0_tj3nonr5gneraukzjkxpsiy7yu
-      react-native-reanimated: 2.12.0_sde7ufwobm7xjtx2yy4netq6zi
-      react-native-redash: 12.6.1_hc3xacyngf3bvaupo2hzzhxixy
+      react-native-reanimated: 3.0.2_sde7ufwobm7xjtx2yy4netq6zi
+      react-native-redash: 12.6.1_pte5poqlm57snnzbleowv2t2oa
       react-native-text-size: 4.0.0-rc.1_react-native@0.70.5
       semver: 5.7.1
       tinycolor2: 1.5.2
