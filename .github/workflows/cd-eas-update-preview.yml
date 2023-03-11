@@ -1,0 +1,114 @@
+name: Deploy Preview
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+
+jobs:
+  ci-lint-and-test:
+    uses: ./.github/workflows/ci-lint-and-test.yml
+    name: Lint & Test
+
+  eas-update-preview:
+    runs-on: ubuntu-latest
+    name: EAS Update Preview
+    environment: preview
+    needs: [ci-lint-and-test]
+    env:
+      APP_VARIANT: ${{ vars.APP_VARIANT }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 🏗 Install PNPM packager
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/pnpm-install
+
+      - name: 🚀 Create preview
+        uses: expo/expo-github-action/preview@v8
+        id: preview
+        with:
+          command: eas update --auto --branch=pr-${{ github.event.number }} --non-interactive
+
+      # Find the PR associated with this push, if there is one.
+      - name: 📄 Get PR details
+        uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+
+      - name: 💬 Comment in Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+        with:
+          channel-id: engineering
+          # slack-message: ":rocket: New Preview EAS update from PR <${{ github.event.pull_request.html_url || github.event.head_commit.url }}|*#${{ steps.findPr.outputs.pr }}*> is available!\n- Preview: ${{ steps.preview.outputs.qr }}"
+          payload: |
+            {
+              "text": "${{ steps.preview.outputs.projectName }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":rocket: New Preview EAS update from PR *#${{ steps.findPr.outputs.pr }}* is available!"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ">_${{ steps.preview.outputs.message }}_"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Open PR",
+                        "emoji": true
+                      },
+                      "value": "open",
+                      "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Open Update",
+                        "emoji": true
+                      },
+                      "value": "open_update",
+                      "url": "${{ steps.preview.outputs.link }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "Preview Update",
+                        "emoji": true
+                      },
+                      "value": "preview",
+                      "url": "${{ steps.preview.outputs.qr }}"
+                    }
+                  ]
+                }
+              ]
+            }

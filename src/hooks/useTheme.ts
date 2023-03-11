@@ -47,6 +47,8 @@ export default function useTheme() {
    * Useful when the color scheme changes
    */
   const loadColors = useCallback(() => {
+    Colors.loadDesignTokens({ primaryColor: colors.rnuilib.colors.primary });
+
     if (theme === 'default') {
       Colors.loadColors(colors.rnuilib.colors);
       Colors.loadSchemes(colors.rnuilib.themes);
@@ -87,7 +89,7 @@ export default function useTheme() {
         // border: Colors.border,
         card: Colors.bgPaper,
         // notification: Colors.secondary,
-        primary: Colors.primary,
+        primary: Colors.$textPrimary,
         text: Colors.text,
       },
       dark: false,
@@ -100,7 +102,7 @@ export default function useTheme() {
         // border: Colors.border,
         card: Colors.bgPaper,
         // notification: Colors.secondary,
-        primary: Colors.primary,
+        primary: Colors.$textPrimary,
         text: Colors.text,
       },
       dark: true,

@@ -32,5 +32,16 @@
   "editor.wordWrap": "on",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "i18n-ally.localesPaths": ["src/config/libs/i18n", "src/config/libs/i18n/locales"]
+  // make sure to disable i18n-ally in your global setting and only enable it for such projects
+  "i18n-ally.disabled": false,
+  "i18n-ally.localesPaths": ["src/services/i18n", "src/services/i18n/locales"],
+  "i18n-ally.keystyle": "flat",
+
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "search.exclude": {
+    "yarn.lock": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.format.enable": true
 }

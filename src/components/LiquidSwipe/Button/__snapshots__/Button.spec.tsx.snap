@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "borderRadius": 25,
+      "height": 50,
+      "justifyContent": "center",
+      "left": NaN,
+      "opacity": 0,
+      "position": "absolute",
+      "top": NaN,
+      "width": 50,
+    }
+  }
+>
+  <Text />
+</View>
+`;

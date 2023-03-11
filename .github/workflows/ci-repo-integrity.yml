@@ -1,0 +1,43 @@
+name: Repo Integrity
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/**'
+
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/**'
+
+jobs:
+  monorepo-integrity:
+    name: Integrity Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: 🏗 Install PNPM packager
+        uses: pnpm/action-setup@v2.2.4
+
+      - name: 📦 Install dependencies
+        uses: ./.github/actions/pnpm-install
+
+      - name: 🚨 Check for vulnerabilities in dependencies
+        continue-on-error: true
+        run: pnpm audit
+
+      - name: 📜 Check for outdated dependencies
+        continue-on-error: true
+        run: pnpm outdated

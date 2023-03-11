@@ -3,27 +3,51 @@
     "version": ">= 3.1.1"
   },
   "build": {
-    "dev-client": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "ios": {
-        "simulator": true
+    "production": {
+      "channel": "production",
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
       },
+      "env": {
+        "APP_VARIANT": "production"
+      }
+    },
+    "rc": {
+      "distribution": "internal",
+      "channel": "rc",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "APP_VARIANT": "rc"
+      }
+    },
+    "preview": {
+      "extends": "rc",
+      "channel": "preview",
+      "env": {
+        "APP_VARIANT": "preview"
       }
     },
     "development": {
+      "extends": "rc",
+      "channel": "development",
       "developmentClient": true,
-      "distribution": "internal",
-      "channel": "development"
+      "env": {
+        "APP_VARIANT": "development"
+      }
     },
-    "preview": {
-      "distribution": "internal",
-      "channel": "preview"
-    },
-    "production": {
-      "channel": "production"
+    "dev-client": {
+      "extends": "rc",
+      "channel": "development",
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "APP_VARIANT": "development"
+      }
     }
   },
   "submit": {
