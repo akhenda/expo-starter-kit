@@ -3,12 +3,10 @@ description: Verify a few things needed in our workflows before proceeding
 outputs:
   should-build:
     description: Tells EAS workflows if they should build binaries or not
-    value: |
-      contains(steps.changed-files.outputs.modified_files, 'package.json') &&
-      contains(steps.changed-files.outputs.modified_files, 'pnpm-lock.yaml')
+    value: ${{ contains(steps.changed-files.outputs.modified_files, 'pnpm-lock.yaml') }}
   check-deps-integrity:
     description: Tells workflows if dependency checks should be done
-    value: contains(steps.changed-files.outputs.modified_files, 'pnpm-lock.yaml')
+    value: ${{ contains(steps.changed-files.outputs.modified_files, 'pnpm-lock.yaml') }}
 
 runs:
   using: 'composite'

@@ -9,7 +9,7 @@ specifiers:
   '@expo-google-fonts/ubuntu': 0.2.2
   '@expo/vector-icons': 13.0.0
   '@nandorojo/swr-firestore': 0.16.0
-  '@react-native-async-storage/async-storage': ~1.17.11
+  '@react-native-async-storage/async-storage': 1.17.11
   '@react-native-community/blur': 4.3.0
   '@react-native-community/datetimepicker': 6.5.2
   '@react-native-community/eslint-config': 3.2.0
@@ -33,6 +33,7 @@ specifiers:
   '@semantic-release/changelog': 6.0.2
   '@semantic-release/git': 10.0.1
   '@semantic-release/github': 8.0.7
+  '@semantic-release/npm': 9.0.2
   '@testing-library/jest-native': 5.4.1
   '@testing-library/react-native': 11.5.0
   '@types/color': 3.0.3
@@ -41,7 +42,7 @@ specifiers:
   '@types/lodash': 4.14.191
   '@types/node': 18.11.18
   '@types/react': ~18.0.24
-  '@types/react-native': ~0.70.6
+  '@types/react-native': 0.70.11
   '@types/react-test-renderer': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.48.2
   '@typescript-eslint/parser': 5.48.2
@@ -60,28 +61,28 @@ specifiers:
   eslint-plugin-ft-flow: 2.0.3
   eslint-plugin-import: 2.27.5
   eslint-plugin-unused-imports: 2.0.0
-  expo: ~47.0.12
-  expo-asset: ~8.7.0
-  expo-build-properties: ~0.4.1
+  expo: 47.0.13
+  expo-asset: 8.7.0
+  expo-build-properties: 0.4.1
   expo-community-flipper: 47.0.0
-  expo-constants: ~14.0.2
-  expo-dev-client: ~2.0.1
-  expo-font: ~11.0.1
-  expo-intent-launcher: ~10.3.1
-  expo-linking: ~3.3.1
-  expo-localization: ~14.0.0
-  expo-splash-screen: ~0.17.5
-  expo-status-bar: ~1.4.2
-  expo-system-ui: ~2.0.1
-  expo-updates: ~0.15.6
-  expo-web-browser: ~12.0.0
-  firebase: ^9.17.2
+  expo-constants: 14.0.2
+  expo-dev-client: 2.0.1
+  expo-font: 11.0.1
+  expo-intent-launcher: 10.3.1
+  expo-linking: 3.3.1
+  expo-localization: 14.0.0
+  expo-splash-screen: 0.17.5
+  expo-status-bar: 1.4.4
+  expo-system-ui: 2.0.1
+  expo-updates: 0.15.6
+  expo-web-browser: 12.0.0
+  firebase: 9.17.2
   git-cz: 4.9.0
   husky: 8.0.3
   i18next: 22.4.9
   i18next-json-sync: 3.1.2
   jest: 29.0.0
-  jest-expo: ~47.0.1
+  jest-expo: 47.0.1
   jest-extended: 3.2.4
   lint-staged: 13.1.0
   lodash: 4.17.21
@@ -105,11 +106,11 @@ specifiers:
   react-native-reanimated: 2.12.0
   react-native-redash: 18.1.0
   react-native-safe-area-context: 4.4.1
-  react-native-screens: ~3.18.0
+  react-native-screens: 3.18.2
   react-native-shared-element: 0.8.4
   react-native-svg: 13.4.0
   react-native-ui-lib: 7.0.0
-  react-native-web: ~0.18.9
+  react-native-web: 0.18.12
   react-navigation-shared-element: 3.1.3
   react-test-renderer: 18.1.0
   react-tracked: 1.7.11
@@ -164,7 +165,7 @@ dependencies:
   expo-linking: 3.3.1_expo@47.0.13
   expo-localization: 14.0.0_expo@47.0.13
   expo-splash-screen: 0.17.5_expo@47.0.13
-  expo-status-bar: 1.4.2
+  expo-status-bar: 1.4.4
   expo-system-ui: 2.0.1_expo@47.0.13
   expo-updates: 0.15.6_expo@47.0.13
   expo-web-browser: 12.0.0_expo@47.0.13
@@ -189,7 +190,7 @@ dependencies:
   react-native-shared-element: 0.8.4
   react-native-svg: 13.4.0_tj3nonr5gneraukzjkxpsiy7yu
   react-native-ui-lib: 7.0.0_hc3xacyngf3bvaupo2hzzhxixy
-  react-native-web: 0.18.10_ef5jwxihqo6n7gxfmzogljlgcm
+  react-native-web: 0.18.12_ef5jwxihqo6n7gxfmzogljlgcm
   react-navigation-shared-element: 3.1.3_vizykmtxcwrbrpk6rzwc453xlu
   react-tracked: 1.7.11_2bkajway7msrchxwrvhplxy5ru
   swr: 2.0.3_react@18.1.0
@@ -205,6 +206,7 @@ devDependencies:
   '@semantic-release/changelog': 6.0.2_semantic-release@20.1.1
   '@semantic-release/git': 10.0.1_semantic-release@20.1.1
   '@semantic-release/github': 8.0.7_semantic-release@20.1.1
+  '@semantic-release/npm': 9.0.2_semantic-release@20.1.1
   '@testing-library/jest-native': 5.4.1_36vzno5z2xsbftuvrey5zygoea
   '@testing-library/react-native': 11.5.0_ts3xxxvvvnuzexgidrgbha255i
   '@types/color': 3.0.3
@@ -213,7 +215,7 @@ devDependencies:
   '@types/lodash': 4.14.191
   '@types/node': 18.11.18
   '@types/react': 18.0.27
-  '@types/react-native': 0.70.9
+  '@types/react-native': 0.70.11
   '@types/react-test-renderer': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.48.2_azmbqzqvrlvblbdtiwxwvyvjjy
   '@typescript-eslint/parser': 5.48.2_et5x32uxl7z5ldub3ye5rhlyqm
@@ -4788,8 +4790,8 @@ packages:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: false
 
-  /@types/react-native/0.70.9:
-    resolution: {integrity: sha512-0C6sIo13ztzM2llaWdTq0Vpscx3VdU0T8F45kEurWv3l5n+BHm/Mkr8Z+N29eXDYGhTvCz5y2jegB8JyiVa5kw==}
+  /@types/react-native/0.70.11:
+    resolution: {integrity: sha512-FobPtzoNPNHugBKMfzs4Li0Q9ei4tgU8SI1M5Ayg7+t5/+noCm2sknI8uwij22wMkcHcefv8RFx4q28nNVJtCQ==}
     dependencies:
       '@types/react': 18.0.27
     dev: true
@@ -8694,8 +8696,8 @@ packages:
       - supports-color
     dev: false
 
-  /expo-status-bar/1.4.2:
-    resolution: {integrity: sha512-ZWjO6D4ARGYfAd3SWDD3STNudHDhyBZDZjhhseqoEmsf7bS9ykny8KKOhlzJW24qIQNPhkgdvHhaw9fQwMJy3Q==}
+  /expo-status-bar/1.4.4:
+    resolution: {integrity: sha512-5DV0hIEWgatSC3UgQuAZBoQeaS9CqeWRZ3vzBR9R/+IUD87Adbi4FGhU10nymRqFXOizGsureButGZIXPs7zEA==}
     dev: false
 
   /expo-structured-headers/3.0.1:
@@ -13875,8 +13877,8 @@ packages:
       url-parse: 1.5.10
     dev: false
 
-  /react-native-web/0.18.10_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-YV2gtZa1n7ulTGp+HcxH+KsAtaDPBI/dKd9oOQS31zyFHURjObLUVkKnGjkmlYAUReWfvmlU64GzyNwoZF9/tA==}
+  /react-native-web/0.18.12_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-fboP7yqobJ8InSr4fP+bQ3scOtSQtUoPcR+HWasH8b/fk/RO+mWcJs/8n+lewy9WTZc2D68ha7VwRDviUshEWA==}
     peerDependencies:
       react: ^17.0.2 || ^18.0.0
       react-dom: ^17.0.2 || ^18.0.0

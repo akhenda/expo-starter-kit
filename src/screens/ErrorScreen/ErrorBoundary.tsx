@@ -4,6 +4,7 @@ import isEqual from 'lodash/isEqual';
 
 import { ErrorDetails } from './ErrorDetails';
 
+// TODO(@akhenda) Refactor Error Screens
 interface Props {
   children: ReactNode;
   catchErrors: 'always' | 'dev' | 'prod' | 'never';
