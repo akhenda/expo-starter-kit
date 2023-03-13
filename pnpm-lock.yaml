@@ -20,7 +20,7 @@ specifiers:
   '@react-native-firebase/dynamic-links': 17.3.2
   '@react-native-firebase/firestore': 17.3.2
   '@react-native-firebase/functions': 17.3.2
-  '@react-native-firebase/perf': 17.3.2
+  '@react-native-firebase/perf': ^17.3.2
   '@react-native-firebase/storage': 17.3.2
   '@react-native-masked-view/masked-view': github:react-native-masked-view/masked-view
   '@react-native-picker/picker': 2.4.8
@@ -33,6 +33,7 @@ specifiers:
   '@semantic-release/changelog': 6.0.2
   '@semantic-release/git': 10.0.1
   '@semantic-release/github': 8.0.7
+  '@semantic-release/npm': ^9.0.2
   '@testing-library/jest-native': 5.4.1
   '@testing-library/react-native': 11.5.0
   '@types/color': 3.0.3
@@ -40,7 +41,7 @@ specifiers:
   '@types/jest': 29.2.5
   '@types/lodash': 4.14.191
   '@types/node': 18.11.18
-  '@types/react': ~18.0.24
+  '@types/react': 18.0.28
   '@types/react-native': ~0.70.6
   '@types/react-test-renderer': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.48.2
@@ -205,6 +206,7 @@ devDependencies:
   '@semantic-release/changelog': 6.0.2_semantic-release@20.1.1
   '@semantic-release/git': 10.0.1_semantic-release@20.1.1
   '@semantic-release/github': 8.0.7_semantic-release@20.1.1
+  '@semantic-release/npm': 9.0.2_semantic-release@20.1.1
   '@testing-library/jest-native': 5.4.1_36vzno5z2xsbftuvrey5zygoea
   '@testing-library/react-native': 11.5.0_ts3xxxvvvnuzexgidrgbha255i
   '@types/color': 3.0.3
@@ -212,7 +214,7 @@ devDependencies:
   '@types/jest': 29.2.5
   '@types/lodash': 4.14.191
   '@types/node': 18.11.18
-  '@types/react': 18.0.27
+  '@types/react': 18.0.28
   '@types/react-native': 0.70.9
   '@types/react-test-renderer': 18.0.0
   '@typescript-eslint/eslint-plugin': 5.48.2_azmbqzqvrlvblbdtiwxwvyvjjy
@@ -4791,17 +4793,17 @@ packages:
   /@types/react-native/0.70.9:
     resolution: {integrity: sha512-0C6sIo13ztzM2llaWdTq0Vpscx3VdU0T8F45kEurWv3l5n+BHm/Mkr8Z+N29eXDYGhTvCz5y2jegB8JyiVa5kw==}
     dependencies:
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
     dev: true
 
   /@types/react-test-renderer/18.0.0:
     resolution: {integrity: sha512-C7/5FBJ3g3sqUahguGi03O79b8afNeSD6T8/GU50oQrJCU0bVCCGQHaGKUbg2Ce8VQEEqTw8/HiS6lXHHdgkdQ==}
     dependencies:
-      '@types/react': 18.0.27
+      '@types/react': 18.0.28
     dev: true
 
-  /@types/react/18.0.27:
-    resolution: {integrity: sha512-3vtRKHgVxu3Jp9t718R9BuzoD4NcQ8YJ5XRzsSKxNDiDonD2MXIT1TmSkenxuCycZJoQT5d2vE8LwWJxBC1gmA==}
+  /@types/react/18.0.28:
+    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
