@@ -15,7 +15,6 @@ jobs:
 
   semantic-release:
     name: Semantic Release
-    needs: [ci-lint-and-test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
